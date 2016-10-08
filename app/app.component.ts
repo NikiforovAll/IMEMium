@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 @Component({
     selector: 'my-app',
     moduleId: module.id,
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit { 
     ngOnInit(){
-        var drawGauge = require('app/gentelella.custom.js');
-        drawGauge.init();
+        var gentelellaInit = require('app/gentelella.custom.js');
+        gentelellaInit.init();
+    }
+    ngAfterViewInit(){
+        
     }
 }

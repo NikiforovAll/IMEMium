@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function init(){
+function init(){    
+
     var CURRENT_URL = window.location.href.split('?')[0],
     $BODY = $('#body'),
     $MENU_TOGGLE = $('#menu_toggle'),
