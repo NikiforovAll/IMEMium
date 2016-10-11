@@ -24,19 +24,19 @@
               <div class="menu_section">
                 <!--<h3>General</h3>-->
                 <ul class="nav side-menu">
-                  <li><a routerLink="/UserProfile"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a href="#">Option1</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/Courses"><i class="fa fa-book"></i> Courses <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/courses"><i class="fa fa-book"></i> Courses <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a href="#">Course1</a></li>
                       <li><a href="#">Course2</a></li>
                       <li><a href="#">Course2</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/Students"><i class="fa  fa-graduation-cap"></i> Students <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Students <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a routerLink="/Students"href="#">Preview</a></li>
                     </ul>-->
@@ -46,9 +46,9 @@
               <div class="menu_section">
                 <h3>Additional materials</h3>
                 <ul class="nav side-menu">
-                  <li><a routerLink="/UserProfile"><i class="fa fa-print"></i> Additional Pages <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard"><i class="fa fa-print"></i> Additional Pages <span class="fa fa-chevron-right"></span></a>
                   </li>
-                  <li><a routerLink="/UserProfile"><i class="fa fa-puzzle-piece"></i> Miscellaneous <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/"><i class="fa fa-puzzle-piece"></i> Miscellaneous <span class="fa fa-chevron-right"></span></a>
                   </li>
                 </ul>
               </div>
@@ -67,7 +67,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" routerLink="/login">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>

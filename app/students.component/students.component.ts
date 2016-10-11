@@ -30,7 +30,7 @@ export class StudentsComponent implements OnInit {
             {
                 "targets": [ 0 ],
                 "visible": false
-            } 
+            } ]
         });
     }
 }
