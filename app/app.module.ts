@@ -8,8 +8,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './login/sign-up.component';
 import { PasswordLossComponent } from './login/password-loss.component';
-
-
+import { HomeComponent} from './home/home.component'
+ 
 import { PageNotFoundComponent } from './page-not-found.gentelella/page-not-found.component'
 
 import { AppComponent } from './app.component';
@@ -31,6 +31,7 @@ import {AppRoutingModule} from './app-routing.module';
   ],
   declarations: [
     AppComponent,
+    HomeComponent,
     LoginComponent,
     SignUpComponent,
     PasswordLossComponent,

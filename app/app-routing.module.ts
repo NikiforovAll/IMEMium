@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './login/sign-up.component';
+import { HomeComponent} from './home/home.component'
+
 import {PasswordLossComponent} from './login/password-loss.component'
 
 import { PageNotFoundComponent } from './page-not-found.gentelella/page-not-found.component'
@@ -16,6 +18,10 @@ const routes: Routes = [
     {
         path: 'signup',
         component: SignUpComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent
     },
     {   
         path: 'restorepassword',
