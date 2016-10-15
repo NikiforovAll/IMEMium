@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Student, UserType, StudentStatus } from './Models/Student';
+import { Student, UserType, StudentStatus } from '../Models/Student';
 @Injectable()
 export class StudentService {
     getStudents(num: number): Student[] {

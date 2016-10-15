@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Student } from '../Models/Student';
+import { Student } from '../../Models/Student';
 import { StudentService } from '../student.service';
 @Component({
     moduleId: module.id,
