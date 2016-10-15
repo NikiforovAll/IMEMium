@@ -5,6 +5,8 @@ import {
     style, state
 } from '@angular/core';
 
+import { LoginConfigService, delay } from './login-config.service';
+
 @Component({
     moduleId: module.id,
     selector: 'password-loss',
@@ -22,10 +24,10 @@ import {
                     opacity: 0,
                     transform: 'translateX(-100%)'
                 }),
-                animate('0.5s ease-in')
+                animate(delay + 'ease-in')
             ]),
             transition('* => void', [
-                animate('0.5s ease-out', style({
+                animate(delay + 'ease-out', style({
                     opacity: 0,
                     transform: 'translateX(100%)'
                 }))
