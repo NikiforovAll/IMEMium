@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService} from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -6,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'sidebar-g.component.html'
 })
 export class SidebarComponent implements OnInit {
-    constructor() { }
-
+    constructor( 
+     private  _authService: AuthService,
+     private router: Router) { }
+    logout() {
+       this._authService.logout();
+    }
     ngOnInit() { }
 }

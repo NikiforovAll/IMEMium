@@ -9,13 +9,16 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" routerLink="/">Log in</a>
+                <a 
+                class="btn btn-default submit" 
+                (click)="login()"
+                >Log in</a>
                 <a class="reset_pass" routerLink="/restorepassword">Lost your password?</a>
               </div>
 

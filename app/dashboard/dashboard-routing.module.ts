@@ -7,8 +7,9 @@ import { FooterComponent } from './footer.gentelella/footer-g.component';
 import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.component';
 import { StudentsComponent } from './students.component/students.component';
 import { CoursesComponent } from './courses.component/courses.component';
-
 import { DashboardComponent } from './dashboard.component';
+
+import {AuthGuard} from '../auth-guard.service'
 const routes: Routes = [
             {
                 path: '',
@@ -31,7 +32,8 @@ const routes: Routes = [
                         path: 'students',
                         component: StudentsComponent
                     }
-                ]
+                ],
+                canActivate:[AuthGuard]
             }
         ];
 

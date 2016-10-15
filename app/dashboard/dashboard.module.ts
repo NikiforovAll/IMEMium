@@ -8,6 +8,7 @@ import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.com
 import { StudentsComponent } from './students.component/students.component';
 import { CoursesComponent } from './courses.component/courses.component';
 
+
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -25,7 +26,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
         StudentsComponent,
         CoursesComponent
     ],
-    providers: [
+    providers: [        
+        
     ]
 })
 export class DashboardModule { }

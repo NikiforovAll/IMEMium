@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule }   from '@angular/forms';
 
 import { HomeModule } from './home/home.module'
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from './page-not-found.gentelella/page-not-foun
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AuthGuard } from './auth-guard.service';
+import { AuthService} from './auth.service';
 
 
 // import { TopnavComponent } from './topnav.gentelella/topnav-g.component';
@@ -22,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     DashboardModule,
     HomeModule,
     LoginModule,
@@ -42,6 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
     // StudentsComponent,
     // CoursesComponent
   ],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

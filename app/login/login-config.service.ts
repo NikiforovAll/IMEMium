@@ -9,4 +9,4 @@ export class LoginConfigService {
     }
 }
 
-export const delay = '0.5s';
+export const delay = '0.3s';

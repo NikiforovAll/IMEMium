@@ -4,6 +4,8 @@ import {
     style, state
 } from '@angular/core';
 import {LoginConfigService, delay} from './login-config.service';
+import {AuthService, IUser} from '../auth.service'
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -41,12 +43,19 @@ export class LoginComponent implements OnInit {
     @HostBinding('style.display') get display() {
         return 'block';
     }
+    user:IUser = {};
+    constructor(
+     private loginConfig: LoginConfigService,
+     private  _authService: AuthService,
+     private router: Router ) { }
 
-    // @HostBinding('style.position') get position() {
-    //     return 'absolute';
-    // }
+    login(){
+        let result = this._authService.login(this.user.email, this.user.password);
+        if(result){
+            this.router.navigate(['']);
+        }
+    }
 
-    constructor(loginConfig: LoginConfigService) { }
 
     ngOnInit() { }
 }
