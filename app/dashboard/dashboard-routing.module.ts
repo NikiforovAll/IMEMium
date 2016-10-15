@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { TopnavComponent } from '../topnav.gentelella/topnav-g.component';
 import { SidebarComponent } from '../sidebar.gentelella/sidebar-g.component'
@@ -9,11 +9,7 @@ import { StudentsComponent } from '../students.component/students.component';
 import { CoursesComponent } from '../courses.component/courses.component';
 
 import { DashboardComponent } from './dashboard.component';
-
-
-@NgModule({
-    imports: [
-        RouterModule.forChild([
+const routes: Routes = [
             {
                 path: '',
                 redirectTo: 'dashboard',
@@ -37,7 +33,11 @@ import { DashboardComponent } from './dashboard.component';
                     }
                 ]
             }
-        ])
+        ];
+
+@NgModule({
+    imports: [
+        RouterModule.forChild(routes)
     ],
     exports: [
         RouterModule

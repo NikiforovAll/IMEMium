@@ -2,18 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeModule } from './home/home.module'
 import { DashboardModule } from './dashboard/dashboard.module';
+import { LoginModule } from './login/login.module';
 
-import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './login/sign-up.component';
-import { PasswordLossComponent } from './login/password-loss.component';
-import { HomeComponent} from './home/home.component'
- 
 import { PageNotFoundComponent } from './page-not-found.gentelella/page-not-found.component'
 
 import { AppComponent } from './app.component';
-import {AppRoutingModule} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -27,15 +23,18 @@ import {AppRoutingModule} from './app-routing.module';
   imports: [
     BrowserModule,
     DashboardModule,
+    HomeModule,
+    LoginModule,
     AppRoutingModule
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    SignUpComponent,
-    PasswordLossComponent,
     PageNotFoundComponent
+    // HomeComponent,
+    // LoginComponent,
+    // SignUpComponent,
+    // PasswordLossComponent,
+    // PageNotFoundComponent
     // SidebarComponent,
     // TopnavComponent,
     // FooterComponent,
