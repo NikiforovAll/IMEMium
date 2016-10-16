@@ -1,7 +1,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-sitemap" ></i> <span>IMEM</span></a>
+              <a routerLink='/' class="site_title"><i class="fa fa-sitemap" ></i> <span>IMEM</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,9 +46,9 @@
               <div class="menu_section">
                 <h3>Additional materials</h3>
                 <ul class="nav side-menu">
-                  <li><a routerLink="/dashboard"><i class="fa fa-calendar"></i>Calendar<span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Calendar<span class="fa fa-chevron-right"></span></a>
                   </li>
-                  <li><a routerLink="/dashboard/"><i class="fa fa-puzzle-piece"></i> Miscellaneous <span class="fa fa-chevron-right"></span></a>
+                  <li *ngIf='_authService.isAdminSession()'><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Requests <span class="badge bg-green" style="float:right;">1</span></a>
                   </li>
                 </ul>
               </div>

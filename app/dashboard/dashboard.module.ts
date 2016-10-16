@@ -7,8 +7,9 @@ import { FooterComponent } from './footer.gentelella/footer-g.component';
 import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.component';
 import { StudentsComponent } from './students.component/students.component';
 import { CoursesComponent } from './courses.component/courses.component';
-
-
+import { CalendarComponent } from './calendar.gentelella/calendar.component';
+import { FullCalendarService } from './calendar.gentelella/calendar.service'
+import { RequestComponent } from './request-panel/request-panel.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -24,10 +25,12 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
         FooterComponent,
         UserDetailsComponent,
         StudentsComponent,
+        CalendarComponent,
+        RequestComponent,
         CoursesComponent
     ],
-    providers: [        
-        
+    providers: [
+        FullCalendarService
     ]
 })
 export class DashboardModule { }

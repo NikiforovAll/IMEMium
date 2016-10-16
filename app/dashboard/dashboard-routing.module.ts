@@ -8,34 +8,44 @@ import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.com
 import { StudentsComponent } from './students.component/students.component';
 import { CoursesComponent } from './courses.component/courses.component';
 import { DashboardComponent } from './dashboard.component';
+import { CalendarComponent } from './calendar.gentelella/calendar.component';
+import {RequestComponent} from './request-panel/request-panel.component';
 
-import {AuthGuard} from '../auth-guard.service'
+import { AuthGuard } from '../auth-guard.service'
 const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        children: [
             {
                 path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
+                component: UserDetailsComponent
             },
             {
-                path: 'dashboard',
-                component: DashboardComponent,
-                children: [
-                    {
-                        path: '',
-                        component: UserDetailsComponent
-                    },
-                    {
-                        path: 'courses',
-                        component: CoursesComponent
-                    },
-                     {
-                        path: 'students',
-                        component: StudentsComponent
-                    }
-                ],
-                canActivate:[AuthGuard]
+                path: 'courses',
+                component: CoursesComponent
+            },
+            {
+                path: 'students',
+                component: StudentsComponent
+            },
+            {
+                path: 'calendar',
+                component: CalendarComponent
+            },
+            {
+                path: 'requests',
+                component: RequestComponent
             }
-        ];
+        ],
+        canActivate: [AuthGuard]
+    }
+];
 
 @NgModule({
     imports: [

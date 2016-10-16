@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
     constructor( 
-     private  _authService: AuthService,
+     public  _authService: AuthService,
      private router: Router) { }
     logout() {
        this._authService.logout();

@@ -49,18 +49,17 @@
                 </div>
               </div>
               <h3>{{_authService.sessionUser.email}}</h3>
-
               <ul class="list-unstyled user_data">
-                <li *ngIf="!_authService.isAdminSession()"><i class="fa fa-map-marker user-profile-icon"></i>(User.Course)
+                <li *ngIf="!_authService.isAdminSession()"><i class="fa fa-map-marker user-profile-icon"></i> (Student.course)
                 </li>
 
                 <li>
-                  <i class="fa fa-briefcase user-profile-icon"></i> (User.Title)
+                  <i class="fa fa-briefcase user-profile-icon"></i> {{_authService.sessionUser.role}}
                 </li>
 
                 <li class="m-top-xs">
                   <i class="fa fa-external-link user-profile-icon"></i>
-                  <a href="#" target="_blank">(User.Site)</a>
+                  <a href="#" target="_blank">[social link]</a>
                 </li>
               </ul>
 
