@@ -9,8 +9,8 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i style="font-size:24pt;" class="fa fa-user" aria-hidden="true"></i>  (User.Name)
-                    <span class=" fa fa-angle-down"></span>
+                    <i style="font-size:24pt;" class="fa fa-user" aria-hidden="true"></i> {{_authService.sessionUser.email}}
+                    <span class=" fa fa-angle-down" style="padding-left:5px;"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                     <li><a href="javascript:;"> Profile</a></li>
@@ -21,7 +21,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a routerLink="/login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a (click)="logout()" routerLink="/login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 

@@ -48,10 +48,10 @@
                   <img class="img-responsive avatar-view" src="http://lorempixel.com/g/200/200/" alt="Avatar" title="Change the avatar">
                 </div>
               </div>
-              <h3>(User.Name)</h3>
+              <h3>{{_authService.sessionUser.email}}</h3>
 
               <ul class="list-unstyled user_data">
-                <li><i class="fa fa-map-marker user-profile-icon"></i>(User.Course)
+                <li *ngIf="!_authService.isAdminSession()"><i class="fa fa-map-marker user-profile-icon"></i>(User.Course)
                 </li>
 
                 <li>
@@ -119,7 +119,7 @@
                 <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                   <li role="presentation" class="active"><a href="#tab_content1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile Details</a>
                   </li>
-                  <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Courses</a>
+                  <li *ngIf="!_authService.isAdminSession()" role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Courses</a>
                   </li>
                 </ul>
                 <div id="myTabContent" class="tab-content">

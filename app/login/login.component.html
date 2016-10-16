@@ -1,40 +1,57 @@
 <body class="login">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
+	<div>
+		<a class="hiddenanchor" id="signup"></a>
+		<a class="hiddenanchor" id="signin"></a>
 
-      <div class="login_wrapper">
-        <div class="animate form login_form">
-          <section class="login_content">
-            <form>
-              <h1>Login Form</h1>
-              <div>
-                <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a 
-                class="btn btn-default submit" 
-                (click)="login()"
-                >Log in</a>
-                <a class="reset_pass" routerLink="/restorepassword">Lost your password?</a>
-              </div>
+		<div class="login_wrapper">
+			<div class="animate form login_form">
+				<section class="login_content">
+					<form>
+						<h1>Login Form</h1>
+						<div>
+							<input [(ngModel)]="user.email" name="email" type="text"
+									class="form-control"
+									placeholder="Username" 
+									required 
+									#emailModel="ngModel"
+									(focus)="isShowError=false"
+									tabindex="1" />
+							<div [hidden]="emailModel.valid || emailModel.pristine" class="bg-danger text-danger">
+								Email is required
+							</div>
+						</div>
 
-              <div class="clearfix"></div>
+						<div>
+							<input [(ngModel)]="user.password" name="password" type="password"
+									class="form-control" placeholder="Password" required 
+									#passwordModel="ngModel"
+									(focus)="isShowError=false"
+									tabindex="2"/>
+						     <div [hidden]="passwordModel.valid || passwordModel.pristine" class="bg-danger text-danger">
+								Password is required
+							 </div>
+               				<div [hidden]="!isShowError" class="bg-danger text-danger">
+								User not found / wrong password
+							 </div>
+						</div>
+						<div>
+							<a class="btn btn-default submit" (click)="login()" routerLink="" tabindex="3">Log in</a>
+							<a class="reset_pass" routerLink="/restorepassword" tabindex="4">Lost your password?</a>
+						</div>
 
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a routerLink="/signup" class="to_register"> Create Account </a>
-                </p>
+						<div class="clearfix"></div>
 
-                <div class="clearfix"></div>
-                <br />
-              </div>
-            </form>
-          </section>
-        </div>
-      </div>
-    </div>
-  </body>
+						<div class="separator">
+							<p class="change_link">New to site?
+								<a routerLink="/signup" class="to_register"> Create Account </a>
+							</p>
+
+							<div class="clearfix"></div>
+							<br />
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>

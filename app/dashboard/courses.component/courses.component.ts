@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
      }
 
     ngOnInit() {
-         this.courses = this._courseService.getCourses(100);
+         this.courses = this._courseService.getCourses(20);
         let dataTableModule: any = $('#datatable');
         let dataTableSoruce:any = [];
         this.courses.forEach(el => {
