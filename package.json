@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
-    "dev":  "lite-server",
+    "dev": "lite-server",
     "docker-build": "docker build -t ng2-quickstart .",
     "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart",
     "pree2e": "npm run webdriver:update",
@@ -32,6 +32,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "@angular/upgrade": "2.0.0",
+    "angular-2-data-table": "^0.1.2",
     "angular2-in-memory-web-api": "0.0.20",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",

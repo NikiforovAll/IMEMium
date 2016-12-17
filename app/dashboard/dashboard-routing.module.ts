@@ -6,7 +6,11 @@ import { SidebarComponent } from './sidebar.gentelella/sidebar-g.component'
 import { FooterComponent } from './footer.gentelella/footer-g.component';
 import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.component';
 import { StudentsComponent } from './students.component/students.component';
+import { StudentComponent } from './student.component/student.component';
+
 import { CoursesComponent } from './courses.component/courses.component';
+import { CourseComponent } from './course.component/course.component';
+
 import { DashboardComponent } from './dashboard.component';
 import { CalendarComponent } from './calendar.gentelella/calendar.component';
 import {RequestComponent} from './request-panel/request-panel.component';
@@ -31,8 +35,16 @@ const routes: Routes = [
                 component: CoursesComponent
             },
             {
+                path: 'courses/:id',
+                component: CourseComponent
+            },
+            {
                 path: 'students',
                 component: StudentsComponent
+            },
+            {
+                path: 'students/:id',
+                component: StudentComponent
             },
             {
                 path: 'calendar',

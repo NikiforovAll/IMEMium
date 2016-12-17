@@ -27,6 +27,7 @@
       'rxjs': 'npm:rxjs',
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'angular2-jwt': 'node_modules/angular2-jwt/angular2-jwt.js',
+      'angular-2-data-table': 'npm:angular-2-data-table/dist',     
       'js-base64':'npm:js-base64/base64.js',
       'buffer':'@empty'
     },
@@ -35,6 +36,11 @@
       "angular2-jwt": {
         "defaultExtension": "js"
       },
+      'angular-2-data-table': {
+        format: 'cjs',
+        defaultExtension: 'js',
+        main: 'index.js'
+      }, 
       app: {
         main: './main.js',
         defaultExtension: 'js'

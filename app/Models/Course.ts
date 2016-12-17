@@ -4,22 +4,22 @@ export class Course {
     StartDate?: Date;
     EndDate?: Date;
     Lecturer?: string;
-    CourseStatus?: CourseStatus
+    CourseStatus?: String
 
-    public getData(): string[] {
+    public getData(): any[] {
         return [
             String(this.id),
             this.Name,
             this.StartDate.toDateString(),
             this.EndDate.toDateString(),
-            CourseStatus[this.CourseStatus],
+            this.CourseStatus,//CourseStatus[this.CourseStatus],
             this.Lecturer
         ];
     }
 }
 
-export enum CourseStatus {
-    active,
-    finished,
-    stopped
-}
+// export enum CourseStatus {
+//     active,
+//     finished,
+//     stopped
+// }

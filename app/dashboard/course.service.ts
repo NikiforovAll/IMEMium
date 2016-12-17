@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Course, CourseStatus, } from '../Models/Course';
+import { Course} from '../Models/Course';
 @Injectable()
 export class CourseService {
     getCourses(num: number): Course[] {
@@ -12,7 +12,7 @@ export class CourseService {
             currCourse.StartDate = new Date(Date.now());
             currCourse.EndDate = new Date(Date.now());
             currCourse.Lecturer = 'Chief';
-            currCourse.CourseStatus = CourseStatus.active;
+            currCourse.CourseStatus = 'test'// CourseStatus.active;
             students.push(currCourse);
         }
         return students;

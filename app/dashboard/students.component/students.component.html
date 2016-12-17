@@ -1,40 +1,68 @@
 <style>
 </style>
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Students</h2>
+    <data-table id="persons-grid"
+        headerTitle="Students"
+        [items]="students"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+        
+        (rowClick)="rowClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)"
+        [rowTooltip]="rowTooltip"
+        >
+        <data-table-column
+            [property]="'FirstName'"
+            [header]="'FirstName'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'LastName'"
+            [header]="'LastName'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'LastName'"
+            [header]="'LastName'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'StudentStatus'"
+            [header]="'Status'"
+            [sortable]="true"
+            [resizable]="true">
+            <template #dataTableCell let-item="item">
+                <span>{{transforStudentStatus(item.StudentStatus)}}</span>
+            </template>
+        </data-table-column>
+        <data-table-column
+            [property]="'Faculty'"
+            [header]="'Faculty'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'Course'"
+            [header]="'Course'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'Group'"
+            [header]="'Group'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'Department'"
+            [header]="'Department'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
 
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <table id="datatable" class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>Faculty</th>
-                            <th>Course</th>
-                            <th>Status</th>
-                            <th>Group</th>
-                            <th>Department</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--<tr *ngFor="let student of students">
-                           <td>{{student.FirstName}}</td>
-                           <td>{{student.LastName}}</td>
-                           <td>{{student.Faculty}}</td>
-                           <td>{{student.Course}}</td>
-                           <td>{{student.Group}}</td>
-                           <td>{{student.Department}}</td>
-                       </tr>-->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    </data-table>
 </div>
 <div class="clearfix"></div>

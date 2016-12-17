@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Student } from '../../Models/Student';
+import { Component, OnInit} from '@angular/core';
+import { Student, StudentStatus } from '../../Models/Student';
+import { Router } from '@angular/router';
 import { StudentService } from '../student.service';
+import { DataTableResource } from 'angular-2-data-table';
 @Component({
     moduleId: module.id,
     selector: 'students-table',
@@ -10,27 +12,34 @@ import { StudentService } from '../student.service';
 export class StudentsComponent implements OnInit {
     public students: Student[];
     private _studentService: StudentService;
-    constructor(private studentService: StudentService) {
+    itemCount = 0;
+        itemResource:DataTableResource<Student>;
+    constructor(private studentService: StudentService, private router: Router) {
         this._studentService = studentService;
-    }
-
-    ngOnInit() {
-    }
-
-    ngAfterViewInit() {
         this.students = this._studentService.getStudents(100);
-        let dataTableModule: any = $('#datatable');
-        let dataTableSoruce:any = [];
-        this.students.forEach(el => {
-            dataTableSoruce.push(el.getData());
-        });
-        dataTableModule.DataTable({
-            data:dataTableSoruce,
-            "columnDefs": [
-            {
-                "targets": [ 0 ],
-                "visible": false
-            } ]
-        });
+        this.itemResource = new DataTableResource(this.students);
+        this.itemResource.count().then(count => this.itemCount = count);
     }
+
+
+    ngOnInit() {    }
+    
+    transforStudentStatus(status: StudentStatus){
+        return StudentStatus[status];
+    }
+    reloadItems(params:any) {
+        this.itemResource.query(params).then(items => this.students = items);
+    }
+
+    // special properties:
+
+    rowClick(rowEvent:any) {
+        console.log('Clicked: ' + rowEvent.row.item.FirstName);
+    }
+
+    rowDoubleClick(rowEvent:any) {
+        this.router.navigate(['dashboard/students/' + rowEvent.row.item.id]);
+    }
+    rowTooltip(item:Student) { return item.StudentStatus; }
+
 }

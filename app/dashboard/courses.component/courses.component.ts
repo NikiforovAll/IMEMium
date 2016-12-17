@@ -1,6 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { Course } from '../../Models/Course';
+import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
+import { DataTableResource } from 'angular-2-data-table';
 @Component({
     moduleId: module.id,
     selector: 'courses',
@@ -10,25 +12,30 @@ import { CourseService } from '../course.service';
 export class CoursesComponent implements OnInit {
     courses: Course[];
     private _courseService: CourseService;
-    constructor(private courseService: CourseService) {
+    itemCount = 0;
+
+    itemResource:DataTableResource<Course>;
+    constructor(private courseService: CourseService,  private router: Router) {
         this._courseService = courseService;
     }
 
     ngOnInit() {
         this.courses = this._courseService.getCourses(20);
-        let dataTableModule: any = $('#datatable');
-        let dataTableSoruce: any = [];
-        this.courses.forEach(el => {
-            dataTableSoruce.push(el.getData());
-        });
-        dataTableModule.DataTable({
-            data: dataTableSoruce,
-            "columnDefs": [
-                {
-                    "targets": [0],
-                    "visible": false
-                }
-            ]
-        });
+        this.itemResource = new DataTableResource(this.courses);
+        this.itemResource.count().then(count => this.itemCount = count);
     }
+    reloadItems(params:any) {
+        this.itemResource.query(params).then(items => this.courses = items);
+    }
+
+
+    rowClick(rowEvent:any) {
+        console.log('Clicked: ' + rowEvent.row.item.Name);
+    }
+
+    rowDoubleClick(rowEvent:any) {
+        this.router.navigate(['dashboard/courses/' + rowEvent.row.item.id]);
+    }
+
+    rowTooltip(item:Course) { return item.Lecturer; }
 }
