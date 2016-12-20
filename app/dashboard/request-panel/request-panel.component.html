@@ -1,6 +1,6 @@
 <div class="page-title">
 	<div class="title_left">
-		<h3>Students</h3>
+		<h3>Список заявок студентів на курси</h3>
 	</div>
 </div>
 
@@ -10,7 +10,7 @@
 	<div class="col-md-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Requests</h2>
+				<h2>Заявки</h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
@@ -19,58 +19,28 @@
 					<thead>
 						<tr>
 							<th style="width: 1%">#</th>
-							<th style="width: 20%">Name</th>
-							<th>Status</th>
-							<th style="">Actions</th>
+							<th style="width: 20%">Ім'я</th>
+							<th>Статус</th>
+							<th ></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>#</td>
+						<tr *ngFor='let student of studentRequests; let i = index' [attr.data-index]="i">
+							<td>#{{i}}</td>
 							<td>
-								<a>Really good student</a>
+								<a>{{student.Name}}</a>
 								<br />
-								<small>Created 10.10.2016</small>
+								<small>Подано 10.10.2016</small>
 							</td>
 							<td>
-								<span class="label label-default"></span>
+								<span *ngIf= "student.Status == 0" class="label label-default">В очікуванні</span>
+								<span *ngIf = "student.Status == 1" class="label label-default">Прийнято</span>
+								<span *ngIf = "student.Status == 2" class="label label-default">Відмовлено</span>
 							</td>
 							<td>
-								<a class="btn btn-success btn-xs"><i class="fa fa-check"></i> Accept </a>
-								<a class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Decline </a>
-								<a class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Ignore </a>
-							</td>
-						</tr>
-						<tr>
-							<td>#</td>
-							<td>
-								<a>Really good student</a>
-								<br />
-								<small>Created 10.10.2016</small>
-							</td>
-							<td>
-								<span class="label label-default">Accepted</span>
-							</td>
-							<td>
-								<a class="btn btn-success btn-xs"><i class="fa fa-check"></i> Accept </a>
-								<a class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Decline </a>
-								<a class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Ignore </a>
-							</td>
-						</tr>
-						<tr>
-							<td>#</td>
-							<td>
-								<a>Really good student</a>
-								<br />
-								<small>Created 10.10.2016</small>
-							</td>
-							<td>
-								<span class="label label-default">Declined</span>
-							</td>
-							<td>
-								<a class="btn btn-success btn-xs"><i class="fa fa-check"></i> Accept </a>
-								<a class="btn btn-danger btn-xs"><i class="fa fa-pencil"></i> Decline </a>
-								<a class="btn btn-warning btn-xs"><i class="fa fa-trash-o"></i> Ignore </a>
+								<a class="btn btn-success btn-xs" (click)="acceptItem(i)"><i class="fa fa-check"></i> Прийняти </a>
+								<a class="btn btn-warning btn-xs" (click)="declineItem(i)"><i class="fa fa-pencil"></i> Відмовити </a>
+								<a class="btn btn-danger btn-xs" (click)="removeItem(i)"><i class="fa fa-trash-o"></i> Видалити </a>
 							</td>
 						</tr>
 					</tbody>

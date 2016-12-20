@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Student, StudentStatus } from '../../Models/Student';
 import { Router } from '@angular/router';
 import { StudentService } from '../student.service';
@@ -12,6 +12,7 @@ import { DataTableResource } from 'angular-2-data-table';
 export class StudentsComponent implements OnInit {
     public students: Student[];
     private _studentService: StudentService;
+@Input() minVersion:Boolean = false;
     itemCount = 0;
         itemResource:DataTableResource<Student>;
     constructor(private studentService: StudentService, private router: Router) {
@@ -38,7 +39,7 @@ export class StudentsComponent implements OnInit {
     }
 
     rowDoubleClick(rowEvent:any) {
-        this.router.navigate(['dashboard/students/' + rowEvent.row.item.id]);
+        this.router.navigate(['dashboard/']);
     }
     rowTooltip(item:Student) { return item.StudentStatus; }
 

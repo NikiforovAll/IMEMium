@@ -2,7 +2,7 @@
 </style>
 <div class="row">
     <data-table id="persons-grid"
-        headerTitle="Students"
+        headerTitle="Студенти учбового порталу ІМЕМ"
         [items]="students"
         [itemCount]="itemCount"
         (reload)="reloadItems($event)"
@@ -13,25 +13,19 @@
         >
         <data-table-column
             [property]="'FirstName'"
-            [header]="'FirstName'"
+            [header]="'Ім\'я'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'LastName'"
-            [header]="'LastName'"
-            [sortable]="true"
-            [resizable]="true">
-        </data-table-column>
-        <data-table-column
-            [property]="'LastName'"
-            [header]="'LastName'"
+            [header]="'Прізвище'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'StudentStatus'"
-            [header]="'Status'"
+            [header]="'Статус'"
             [sortable]="true"
             [resizable]="true">
             <template #dataTableCell let-item="item">
@@ -40,25 +34,25 @@
         </data-table-column>
         <data-table-column
             [property]="'Faculty'"
-            [header]="'Faculty'"
+            [header]="'Факультет'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'Course'"
-            [header]="'Course'"
+            [header]="'Курс(номер)'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'Group'"
-            [header]="'Group'"
+            [header]="'Група'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'Department'"
-            [header]="'Department'"
+            [header]="'Кафедра'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>

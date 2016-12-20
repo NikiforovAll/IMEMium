@@ -20,6 +20,20 @@ export class FullCalendarService {
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
+            monthNames: ['Січень','Лютий','Березень','Квітень','Травень','Червень','Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'],
+                monthNamesShort: ['Січ.','Лют.','Бер','Квіт','Трав','Черв','Лип','Серп','Верес','Жовт','Лист','Груд'],
+                dayNames: ["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"],
+                dayNamesShort: ["ВС","ПН","ВТ","СР","ЧТ","ПТ","СБ"],
+                buttonText: {
+                    prev: "Назад",
+                    next: "Вперед",
+                    prevYear: "Назад",
+                    nextYear: "Вперед",
+                    today: "Сьогодні",
+                    month: "Місяць",
+                    week: "Неділя",
+                    day: "День"
+                },
             selectable: true,
             selectHelper: true,
             select: function (start: any, end: any, allDay: any) {
@@ -61,30 +75,30 @@ export class FullCalendarService {
             },
             editable: true,
             events: [{
-                title: 'homework: 1',
+                title: 'Домашнє завдання: Матан №1',
                 start: new Date(y, m, 1),
                 allDay: true
             }, {
-                title: 'holidays',
+                title: 'Вихідні',
                 start: new Date(y, m, d - 2),
                 end: new Date(y, m, d),
                 allDay: true
             }, {
-                title: 'homework: 2',
+                title: 'Домашнє завдання: Програмування №2',
                 start: new Date(y, m, d),
                 allDay: true
             }, {
-                title: 'lecture: 1',
+                title: 'Лекція: №3',
                 start: new Date(y, m, d + 14),
                 end: new Date(y, m, d),
                 allDay: true
             }, {
-                title: 'lecture: 2',
+                title: 'Лекція: №4',
                 start: new Date(y, m, d + 1),
                 end: new Date(y, m, d + 1),
                 allDay: true
             }, {
-                title: 'lecture: 3',
+                title: 'Лекція: №5',
                 start: new Date(y, m, 28),
                 end: new Date(y, m, 29),
                 allDay: true

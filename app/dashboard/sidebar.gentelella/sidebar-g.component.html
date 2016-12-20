@@ -1,7 +1,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a routerLink='/' class="site_title"><i class="fa fa-sitemap" ></i> <span>IMEM</span></a>
+              <a routerLink='/' class="site_title"><i class="fa fa-sitemap" ></i> <span>Портал ІМЕМ</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -24,19 +24,19 @@
               <div class="menu_section">
                 <!--<h3>General</h3>-->
                 <ul class="nav side-menu">
-                  <li><a routerLink="/dashboard"><i class="fa fa-home"></i> Home <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard"><i class="fa fa-home"></i> Головна Сторінка <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a href="#">Option1</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/dashboard/courses"><i class="fa fa-book"></i> Courses <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/courses"><i class="fa fa-book"></i> Навчальні Курси <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a href="#">Course1</a></li>
                       <li><a href="#">Course2</a></li>
                       <li><a href="#">Course2</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Students <span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Студенти <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a routerLink="/Students"href="#">Preview</a></li>
                     </ul>-->
@@ -44,11 +44,11 @@
                 </ul>
               </div>
               <div class="menu_section">
-                <h3>Additional materials</h3>
+                <h3>Додаткові Матеріали</h3>
                 <ul class="nav side-menu">
-                  <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Calendar<span class="fa fa-chevron-right"></span></a>
+                  <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
                   </li>
-                  <li *ngIf='_authService.isAdminSession()'><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Requests <span class="badge bg-green" style="float:right;">1</span></a>
+                  <li *ngIf='_authService.isAdminSession()'><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів <span class="badge bg-green" style="float:right;">1</span></a>
                   </li>
                 </ul>
               </div>
@@ -61,7 +61,7 @@
               <a data-toggle="tooltip" data-placement="top" >
                 <span class="glyphicon" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" routerLink="/home">
+              <a data-toggle="tooltip" data-placement="top" routerLink="/dashboard">
                 <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
               </a>
               <a data-toggle="tooltip" data-placement="top" title="Settings">

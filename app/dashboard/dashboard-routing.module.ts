@@ -11,6 +11,11 @@ import { StudentComponent } from './student.component/student.component';
 import { CoursesComponent } from './courses.component/courses.component';
 import { CourseComponent } from './course.component/course.component';
 
+import { LecturesComponent } from './lectures.component/lectures.component';
+import { LectureComponent } from './lecture.component/lecture.component';
+
+
+
 import { DashboardComponent } from './dashboard.component';
 import { CalendarComponent } from './calendar.gentelella/calendar.component';
 import {RequestComponent} from './request-panel/request-panel.component';
@@ -33,6 +38,14 @@ const routes: Routes = [
             {
                 path: 'courses',
                 component: CoursesComponent
+            },
+            {
+                path: 'lectures',
+                component: LecturesComponent
+            },
+            {
+                path: 'lectures/:id',
+                component: LectureComponent
             },
             {
                 path: 'courses/:id',

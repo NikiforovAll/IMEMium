@@ -27,7 +27,7 @@
 	</div>-->
 	<div style="margin: auto; max-width: 1000px; margin-bottom: 50px;">
     <data-table id="persons-grid"
-        headerTitle="Courses"
+        headerTitle="Курси учбового порталу ІМЕМ"
         [items]="courses"
         [itemCount]="itemCount"
         (reload)="reloadItems($event)"
@@ -37,13 +37,13 @@
         >
         <data-table-column
             [property]="'Name'"
-            [header]="'Name'"
+            [header]="'Назва'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'StartDate'"
-            [header]="'Start Date'"
+            [header]="'Початок'"
             [sortable]="true">
             <template #dataTableCell let-item="item">
                 <span>{{item.StartDate | date:'dd-MM-yyyy'}}</span>
@@ -51,21 +51,22 @@
         </data-table-column>
 		<data-table-column
             [property]="'EndDate'"
-            [header]="'End Date'"
+            [header]="'Кінець'"
             [sortable]="true">
             <template #dataTableCell let-item="item">
                 <span>{{item.EndDate | date:'dd-MM-yyyy'}}</span>
             </template>
         </data-table-column>
         <data-table-column
+            *ngIf="!isMinVersion"
             [property]="'CourseStatus'"
-            [header]="'Status'"
+            [header]="'Статус'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>
         <data-table-column
             [property]="'Lecturer'"
-            [header]="'Lecturer'"
+            [header]="'Викладач'"
             [sortable]="true"
             [resizable]="true">
         </data-table-column>

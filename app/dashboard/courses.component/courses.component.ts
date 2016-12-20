@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Course } from '../../Models/Course';
 import { Router } from '@angular/router';
 import { CourseService } from '../course.service';
@@ -13,7 +13,8 @@ export class CoursesComponent implements OnInit {
     courses: Course[];
     private _courseService: CourseService;
     itemCount = 0;
-
+    @Input() isMinVersion:Boolean = false;
+    
     itemResource:DataTableResource<Course>;
     constructor(private courseService: CourseService,  private router: Router) {
         this._courseService = courseService;
