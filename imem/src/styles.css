@@ -4308,8 +4308,8 @@ ul.notifications {
 /** /Dropzone.js **/
 
 body{
-color: #73879C;
-    background: #2A3F54 important!;
+/*color: #73879C;*/
+    /*background: #2A3F54 important!;*/
     font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
     font-size: 13px;
     font-weight: 400;
