@@ -8,7 +8,7 @@
 				<section class="login_content">
 					<form>
 						<h1>ИМЕМ</h1>
-						<div>
+						<!--<div>
 							<input [(ngModel)]="user.email" name="email" type="text"
 									class="form-control"
 									placeholder="Username" 
@@ -33,18 +33,19 @@
                				<div [hidden]="!isShowError" class="bg-danger text-danger">
 								User not found / wrong password
 							 </div>
-						</div>
+						</div>-->
 						<div>
-							<a class="btn btn-default submit" (click)="login()" routerLink="" tabindex="3">Увійти</a>
-							<a class="reset_pass" routerLink="/restorepassword" tabindex="4">Забув пароль?</a>
+							<div class="btn btn-default submit" id="googleBtn">Login with Google</div>
+							<!--<a class="btn btn-default submit" (click)="login()" routerLink="" tabindex="3">Увійти</a>-->
+							<!--<a class="reset_pass" routerLink="/restorepassword" tabindex="4">Забув пароль?</a>-->
 						</div>
 
 						<div class="clearfix"></div>
 
 						<div class="separator">
-							<p class="change_link">Немає аккаунта?
+							<!--<p class="change_link">Немає аккаунта?
 								<a routerLink="/signup" class="to_register"> Зареєструватися! </a>
-							</p>
+							</p>-->
 
 							<div class="clearfix"></div>
 							<br />

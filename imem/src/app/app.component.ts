@@ -8,8 +8,6 @@ import { Component, AfterViewInit } from '@angular/core';
 export class AppComponent {
   title = 'app works!';
    ngOnInit(){
-      // debugger;
-      console.log(window);
       // var gentelellaInit = require('../assets/gentelella.custom.js');
       // gentelellaInit.init();
    }

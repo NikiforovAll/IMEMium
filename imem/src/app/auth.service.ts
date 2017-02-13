@@ -1,46 +1,100 @@
 import { Injectable } from '@angular/core';
 // import { Student } from './Models/Student';
 // import { tokenNotExpired } from 'angular2-jwt';
-
+import {LoginComponent} from './login/login.component';
 export interface IUser {
     id: string;
     email?: string;
+    username?: string;
     password?: string;
     role?: string;
 }   
+
 @Injectable()
 export class AuthService {
 
-    private _users: IUser[] = [
-        { id: '1', email: 'admin', password: 'admin', role: 'Admin' },
-        { id: '1', email: 'user', password: 'user', role: 'Student' },
-    ];
+    public userUrl: string 
 
-    public sessionUser:IUser = {id: '-1'};
     constructor() { }
 
     isAdminSession(){
-        return this.sessionUser && this.sessionUser.role == 'Admin'; 
+      return false;
     }
 
     login(email: string, password: string): boolean {
-        console.log('login');
-        let filter = (user:IUser) => {return user.email === email && user.password === password};
-        if (this._users.some(filter)) {
-            this.sessionUser =  this._users.find(filter);
-            localStorage.setItem('id_token', this.sessionUser.role);
-            return true;
-        }
-        return false;
-    }
-    logout():void{
-        console.log('logout as ',this.sessionUser)  ;
-        this.sessionUser = null;
-        localStorage.removeItem('id_token');
-    }
-    loggedIn():boolean{
-        console.log('check ', this.sessionUser);
-        return localStorage.getItem('id_token')!== null;//tokenNotExpired();
+        // console.log('login');
+        // let filter = (user:IUser) => {return user.email === email && user.password === password};
+        // if (this._users.some(filter)) {
+        //     this.sessionUser =  this._users.find(filter);
+        //     localStorage.setItem('id_token', this.sessionUser.role);
+        //     return true;
+        // }
+        // return false;
+        return true;
     }
     
+    setUser(token: string, username: string):void {
+        localStorage.setItem('currentUser', JSON.stringify({ token: token, name: username }));
+    }
+
+    setCurrentUserImageUrl(imageurl: string){
+        this.userUrl = imageurl;
+        // var auth2 = gapi.auth2.getAuthInstance();
+        // console.log(auth2);
+    }
+
+    
+
+    logout():void{
+        // console.log('logout as ',this.sessionUser)  ;
+        // this.sessionUser = null;
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            localStorage.removeItem('currentUser');
+            console.log('User signed out.');
+        });
+    }
+    loggedIn():boolean{
+        // GoogleAuth.isSignedIn.get()
+        // var auth2 = gapi.auth2.getAuthInstance();
+        // var result = auth2.isSignedIn.get();
+        // console.log(result);
+        return localStorage.getItem('currentUser')!== null;//tokenNotExpired();
+    }
+
+    public userAuthToken: string;
+    public userDisplayName :string;
+    public auth2: any;
+    private GoogleAuthManager: any;
+    public googleInit(ctrl: LoginComponent) {
+        let that = this;
+        gapi.load('auth2', function () {
+        that.auth2 = gapi.auth2.init({
+            client_id:'142345956360-ut8b46bo0sanqu66gjfj2pnp6ked96v0.apps.googleusercontent.com',
+            // cookiepolicy: 'single_host_origin',
+            scope: 'profile email https://www.googleapis.com/auth/drive'
+        });
+        that.attachSignin(document.getElementById('googleBtn'), ctrl);
+        });
+    }
+    public attachSignin(element, controller) {
+        let that = this;
+        this.auth2.attachClickHandler(element, {},
+        function (googleUser) {
+
+            let profile = googleUser.getBasicProfile();
+            let userDisplayName = googleUser.getBasicProfile().getName();
+            let thisuserAuthToken = googleUser.getAuthResponse().id_token;
+            localStorage.setItem('currentUser', JSON.stringify({ token: thisuserAuthToken, name: userDisplayName }));
+            // console.log('Token || ' + googleUser.getAuthResponse().id_token);
+            // console.log('ID: ' + profile.getId());
+            // console.log('Name: ' + profile.getName());
+            // console.log('Image URL: ' + profile.getImageUrl());
+            // console.log('Email: ' + profile.getEmail());
+            controller.login();
+        }, function (error) {
+            alert(JSON.stringify(error));
+        });
+    }   
+
 }
