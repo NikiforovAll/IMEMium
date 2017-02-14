@@ -43,15 +43,26 @@
                   </li>
                 </ul>
               </div>
-              <div class="menu_section">
-                <h3>Додаткові Матеріали</h3>
-                <ul class="nav side-menu">
-                  <!--<li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
-                  </li>-->
-                  <li *ngIf='_authService.isAdminSession()'><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів <span class="badge bg-green" style="float:right;">1</span></a>
-                  </li>
-                </ul>
+              <div *ngIf="!_authService.isAdminSession()" class="student">
+
               </div>
+
+              <div *ngIf="_authService.isAdminSession()" class="admin">
+                <div class="menu_section">
+                  <h3>Додаткові Матеріали</h3>
+                  <ul class="nav side-menu">
+                    <!--<li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
+                    </li>-->
+                    <li><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів <span class="badge bg-green" style="float:right;">1</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!--<ng-content *ngIf="!_authService.isAdminSession()"  select=".student"> 
+              </ng-content>-->
+              <!--<ng-content *ngIf="_authService.isAdminSession()" select=".admin"> -->
+              <!--</ng-content>-->
 
             </div>
             <!-- /sidebar menu -->

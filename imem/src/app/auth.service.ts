@@ -17,11 +17,15 @@ export class AuthService {
 
     constructor() { }
 
-    isAdminSession(){
-      return false;
+    public isAdminSession(){
+      return this.getUserRole() == '!Admin';
     }
 
-    login(email: string, password: string): boolean {
+    public getUserRole(): string{
+        return JSON.parse(localStorage.getItem('currentUser')).role;
+    }
+
+    public login(email: string, password: string): boolean {
         // console.log('login');
         // let filter = (user:IUser) => {return user.email === email && user.password === password};
         // if (this._users.some(filter)) {
@@ -33,11 +37,15 @@ export class AuthService {
         return true;
     }
     
-    setUser(token: string, username: string):void {
-        localStorage.setItem('currentUser', JSON.stringify({ token: token, name: username }));
+    public setUser(token: string, username: string):void {
+        localStorage.setItem('currentUser', JSON.stringify(
+            { id: username,
+                token: token,
+                name: username,
+                role: 'Admin' }));
     }
 
-    setCurrentUserImageUrl(imageurl: string){
+    public setCurrentUserImageUrl(imageurl: string){
         this.userUrl = imageurl;
         // var auth2 = gapi.auth2.getAuthInstance();
         // console.log(auth2);
@@ -45,7 +53,7 @@ export class AuthService {
 
     
 
-    logout():void{
+    public logout():void{
         // console.log('logout as ',this.sessionUser)  ;
         // this.sessionUser = null;
         var auth2 = gapi.auth2.getAuthInstance();
@@ -54,7 +62,7 @@ export class AuthService {
             console.log('User signed out.');
         });
     }
-    loggedIn():boolean{
+    public loggedIn():boolean{
         // GoogleAuth.isSignedIn.get()
         // var auth2 = gapi.auth2.getAuthInstance();
         // var result = auth2.isSignedIn.get();
@@ -77,7 +85,7 @@ export class AuthService {
         that.attachSignin(document.getElementById('googleBtn'), ctrl);
         });
     }
-    public attachSignin(element, controller) {
+    public attachSignin(element, controller: LoginComponent) {
         let that = this;
         this.auth2.attachClickHandler(element, {},
         function (googleUser) {
@@ -85,7 +93,8 @@ export class AuthService {
             let profile = googleUser.getBasicProfile();
             let userDisplayName = googleUser.getBasicProfile().getName();
             let thisuserAuthToken = googleUser.getAuthResponse().id_token;
-            localStorage.setItem('currentUser', JSON.stringify({ token: thisuserAuthToken, name: userDisplayName }));
+            controller._authService.setUser(thisuserAuthToken, userDisplayName);
+            // localStorage.setItem('currentUser', JSON.stringify({ token: thisuserAuthToken, name: userDisplayName }));
             // console.log('Token || ' + googleUser.getAuthResponse().id_token);
             // console.log('ID: ' + profile.getId());
             // console.log('Name: ' + profile.getName());

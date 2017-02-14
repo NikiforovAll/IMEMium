@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
     }
     user: IUser = { id: '-1' };
     constructor(
+        public _authService: AuthService,
         private loginConfig: LoginConfigService,
-        private _authService: AuthService,
         private router: Router) { }
 
     isShowError = false;
