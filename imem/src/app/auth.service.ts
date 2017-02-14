@@ -18,7 +18,7 @@ export class AuthService {
     constructor() { }
 
     public isAdminSession(){
-      return this.getUserRole() == '!Admin';
+      return this.getUserRole() == 'Admin';
     }
 
     public getUserRole(): string{
