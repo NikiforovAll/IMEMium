@@ -22,13 +22,16 @@ import { RequestComponent } from './request-panel/request-panel.component';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
-
 // import { DataTableModule } from 'angular-2-data-table';
+import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { PaginationModule } from 'ng2-bootstrap/pagination';
 
 @NgModule({
     imports: [
         CommonModule,
-        DashboardRoutingModule
+        DashboardRoutingModule,
+        Ng2TableModule,
+        PaginationModule.forRoot()
     ],
     declarations: [
         DashboardComponent,
