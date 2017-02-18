@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+
+
+
 /*GENTELELLA*/
 @charset "UTF-8";
 .left_col {
   background: #2A3F54; }
-
+  
+.dataTable tr {
+    cursor: pointer !important;
+}
 .nav-sm .container.body .col-md-3.left_col {
   width: 70px;
   padding: 0;

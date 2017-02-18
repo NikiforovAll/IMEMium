@@ -38,7 +38,7 @@ export class StudentsComponent {
     private data: Array<any>;
 
     public page: number = 1;
-    public itemsPerPage: number = 20;
+    public itemsPerPage: number = 10;
     public maxSize: number = 5;
     public numPages: number = 1;
     public length: number = 0;
@@ -46,7 +46,7 @@ export class StudentsComponent {
     public rows: Array<any> = [];
     public columns: Array<any> = [
         {
-            title: 'Name',
+            title: "Ім\'я'",
             name: 'FirstName',
             filtering:
             {
@@ -55,15 +55,43 @@ export class StudentsComponent {
             }
         },
         {
-            title: 'Position',
+            title: 'Прізвище',
+            name: 'LastName',
+            filtering:
+            {
+                filterString: '',
+                placeholder: ''
+            }
+        },
+        {
+            title: 'Факультет',
             name: 'Faculty',
-            sort: false,
+            filtering:
+            {
+                filterString: '',
+                placeholder: ''
+            }
+        },
+        {
+            title: 'Курс',
+            name: 'Course',
+            filtering:
+            {
+                filterString: '',
+                placeholder: ''
+            }
+        },
+        {
+            title: 'Група',
+            name: 'Group',
             filtering:
             {
                 filterString: '',
                 placeholder: ''
             }
         }
+        
+        
 
     ];
     public config: any = {
@@ -74,6 +102,7 @@ export class StudentsComponent {
     };
 
     public onCellClick(data: any): any {
+        alert('Clicked ' + JSON.stringify(data));
     }
 
     public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
