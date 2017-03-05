@@ -18,7 +18,7 @@ import { LectureComponent } from './lecture.component/lecture.component';
 
 import { DashboardComponent } from './dashboard.component';
 import { CalendarComponent } from './calendar.gentelella/calendar.component';
-import {RequestComponent} from './request-panel/request-panel.component';
+import { RequestComponent } from './request-panel/request-panel.component';
 
 import { AuthGuard } from '../auth-guard.service'
 const routes: Routes = [
@@ -68,7 +68,8 @@ const routes: Routes = [
                 component: RequestComponent
             }
         ],
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
     }
 ];
 
