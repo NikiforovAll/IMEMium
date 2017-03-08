@@ -65,11 +65,17 @@ export class LoginComponent implements OnInit {
     ngOnInit() { }
 
     ngAfterViewInit(){
-        this._authService.googleInit(this);
+        // this._authService.googleInit(this);
     }
-
-    public login(){
-     this.router.navigate(['']);
+    // TBD: remove 
+    public login(param: number){
+        if(param == 2){
+            this._authService.setUser("admin user", "Admin");
+            this.router.navigate(['']);
+        }else if(param == 1){
+            this._authService.setUser("admin user", "User");
+            this.router.navigate(['']);
+        }
     }
 
 }

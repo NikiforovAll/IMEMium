@@ -20,7 +20,8 @@
       "styles": [
         "../node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css",
-        "styles.css"
+        "styles.css",
+        "forms.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",

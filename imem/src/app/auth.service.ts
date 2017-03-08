@@ -15,6 +15,7 @@ export class AuthService {
 
     public userUrl: string
     public loginNumber: number
+    public currentUser: IUser
 
     constructor() {
         this.loginNumber = 0;
@@ -25,10 +26,28 @@ export class AuthService {
     }
 
     public getUserRole(): string {
-        return JSON.parse(localStorage.getItem('currentUser')).role;
+        if(!this.currentUser){
+            this.restoreUser();
+        }
+        return this.currentUser.role;
+        // return JSON.parse(localStorage.getItem('currentUser')).role;
     }
 
-    public login(email: string, password: string): boolean {
+    public getUserName(): string{
+        if(!this.currentUser){
+            this.restoreUser();
+        }
+        return this.currentUser.username;
+    }
+
+    public getUserEmail(): string{
+        if(!this.currentUser){
+            this.restoreUser();
+        }
+        return this.currentUser.email;
+    }
+
+    public login(email: string, password: string, role: string): boolean {
         // console.log('login');
         // let filter = (user:IUser) => {return user.email === email && user.password === password};
         // if (this._users.some(filter)) {
@@ -40,32 +59,25 @@ export class AuthService {
         return true;
     }
 
-    public setUser(token: string, username: string): void {
-        localStorage.setItem('currentUser', JSON.stringify(
-            {
+    public setUser(username: string, role: string): void {
+       var user:IUser = {
                 id: username,
-                token: token,
-                name: username,
-                role: 'Admin'
-            }));
+                username: username,
+                role: role
+            }
+        this.currentUser = user;
+        localStorage.setItem('currentUser', JSON.stringify(user));
     }
-
-    public setCurrentUserImageUrl(imageurl: string) {
-        this.userUrl = imageurl;
-        // var auth2 = gapi.auth2.getAuthInstance();
-        // console.log(auth2);
-    }
-
-
 
     public logout(): void {
+        localStorage.removeItem("currentUser")
         // console.log('logout as ',this.sessionUser)  ;
         // this.sessionUser = null;
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            localStorage.removeItem('currentUser');
-            console.log('User signed out.');
-        });
+        // var auth2 = gapi.auth2.getAuthInstance();
+        // auth2.signOut().then(function () {
+        //     localStorage.removeItem('currentUser');
+        //     console.log('User signed out.');
+        // });
     }
     public loggedIn(): boolean {
         // GoogleAuth.isSignedIn.get()
@@ -76,7 +88,17 @@ export class AuthService {
         console.log(this.loginNumber);
         return localStorage.getItem('currentUser') !== null;//tokenNotExpired();
     }
-
+    
+    private restoreUser(): boolean {
+        var user = localStorage.getItem('currentUser');
+        if(user){
+            this.currentUser = JSON.parse(user);
+            return true;
+        }
+        return false;
+        
+    }
+    /*
     public userAuthToken: string;
     public userDisplayName: string;
     public auth2: any;
@@ -112,5 +134,5 @@ export class AuthService {
                 alert(JSON.stringify(error));
             });
     }
-
+    */
 }

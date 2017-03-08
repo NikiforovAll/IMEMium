@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 import { TopnavComponent } from './topnav.gentelella/topnav-g.component';
 import { SidebarComponent } from './sidebar.gentelella/sidebar-g.component'
@@ -26,11 +27,15 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap/pagination';
 
+import { DatePickerModule } from 'ng2-datepicker';
+
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         DashboardRoutingModule,
         Ng2TableModule,
+        DatePickerModule,
         PaginationModule.forRoot()
     ],
     declarations: [

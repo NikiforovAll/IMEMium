@@ -30,7 +30,6 @@ export class StudentsComponent {
         // this.itemResource.count().then(count => this.itemCount = count);
     }
 
-
     public ngOnInit(): void {
         this.onChangeTable(this.config);
     }
@@ -90,9 +89,6 @@ export class StudentsComponent {
                 placeholder: ''
             }
         }
-        
-        
-
     ];
     public config: any = {
         paging: true,
@@ -119,8 +115,6 @@ export class StudentsComponent {
         this.rows = page && config.paging ? this.tableExtensionService.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
-
-
     // transforStudentStatus(status: StudentStatus){
     //     return StudentStatus[status];
     // }
