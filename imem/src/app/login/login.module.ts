@@ -7,7 +7,8 @@ import { PasswordLossComponent } from './password-loss.component';
 
 import { LoginConfigService } from './login-config.service';
 
-import { LoginRoutingModule } from './login-routing.module'
+import { LoginRoutingModule } from './login-routing.module';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component'
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LoginRoutingModule } from './login-routing.module'
     declarations: [
         LoginComponent,
         PasswordLossComponent,
-        SignUpComponent],
+        SignUpComponent,
+        AuthCallbackComponent],
     providers: [LoginConfigService]
 })
 export class LoginModule { }

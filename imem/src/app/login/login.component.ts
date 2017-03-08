@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     ngAfterViewInit(){
         // this._authService.googleInit(this);
     }
-    // TBD: remove 
+    // TBD: change to real world example
     public login(param: number){
         if(param == 2){
             this._authService.setUser("admin user", "Admin");

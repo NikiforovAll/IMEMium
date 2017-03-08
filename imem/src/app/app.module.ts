@@ -14,6 +14,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,9 @@ import { AuthService } from './auth.service';
     HttpModule,
     LoginModule,
     DashboardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
