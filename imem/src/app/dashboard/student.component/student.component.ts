@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from '../../Models/Student';
-import { ActivatedRoute }   from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,16 +12,19 @@ import { ActivatedRoute }   from '@angular/router';
 export class StudentComponent implements OnInit {
 
     id: string;
-    private sub: any;
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, private router: Router) {
 
     }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-        this.id = params['id']; 
+        this.route.params.subscribe(params => {
+            this.id = params['id'];
         });
+    }
+
+    private navigateToParent(): void {
+        this.router.navigate(['/dashboard/students']);
     }
   
 }

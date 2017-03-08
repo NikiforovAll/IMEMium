@@ -4,7 +4,7 @@ export class PortalUser {
   LastName?:string;
   Phone?: string;
   Sex?: SexType;
-  Birthday?: string;
+  Birthday?: Date;
 }
 export enum SexType{
     Male = 1, Female = 0

@@ -14,6 +14,7 @@ import {LectureComponent} from './lecture.component/lecture.component';
 
 
 import { CoursesComponent } from './courses.component/courses.component';
+import { CoursesTableComponent } from './courses-table/courses-table.component';
 import { CourseComponent } from './course.component/course.component';
 
 // import { CalendarComponent } from './calendar.gentelella/calendar.component';
@@ -46,12 +47,12 @@ import { DatePickerModule } from 'ng2-datepicker';
         UserDetailsComponent,
         StudentsComponent,
         StudentComponent,
-        // CalendarComponent,
         RequestComponent,
         CoursesComponent,
         CourseComponent,
         LecturesComponent,
-        LectureComponent
+        LectureComponent,
+        CoursesTableComponent
     ],
     providers: [
         // FullCalendarService

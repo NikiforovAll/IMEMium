@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Course } from '../../Models/Course';
-import { ActivatedRoute }   from '@angular/router';
+import { ActivatedRoute, Router }   from '@angular/router';
 
 
 @Component({
@@ -14,14 +14,16 @@ export class CourseComponent implements OnInit {
     id: string;
     private sub: any;
 
-    constructor(private route: ActivatedRoute) {
-
+    constructor(private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
         this.id = params['id']; 
         });
+    }
+    private navigateToParent(): void {
+        this.router.navigate(['/dashboard/courses']);
     }
   
 }

@@ -12,7 +12,7 @@ import { NgTableExtensionService } from '../ng-table-extension.service';
     templateUrl: 'students.component.html',
     providers: [StudentService, NgTableExtensionService]
 })
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
     public students: Student[];
     private _studentService: StudentService;
     // @Input() minVersion:Boolean = false;
@@ -23,7 +23,8 @@ export class StudentsComponent {
          private tableExtensionService: NgTableExtensionService,
          private router: Router) {
         this._studentService = studentService;
-        this.students = this._studentService.getStudents(100);
+        //TBD: remove
+        this.students = this._studentService.getStudents(20);
         this.data = this.students;
         this.length = this.data.length;
         // this.itemResource = new DataTableResource(this.students);
@@ -33,9 +34,8 @@ export class StudentsComponent {
     public ngOnInit(): void {
         this.onChangeTable(this.config);
     }
-
+// ================== TABLE CONFIG ==================
     private data: Array<any>;
-
     public page: number = 1;
     public itemsPerPage: number = 10;
     public maxSize: number = 5;
@@ -98,7 +98,8 @@ export class StudentsComponent {
     };
 
     public onCellClick(data: any): any {
-        alert('Clicked ' + JSON.stringify(data));
+        // alert('Clicked ' + JSON.stringify(data));
+        this.router.navigate(['/dashboard/students', data.row.id.toString()]);
     }
 
     public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
@@ -115,6 +116,8 @@ export class StudentsComponent {
         this.rows = page && config.paging ? this.tableExtensionService.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
+    // ================== TABLE CONFIG ==================(END)
+    
     // transforStudentStatus(status: StudentStatus){
     //     return StudentStatus[status];
     // }

@@ -17,6 +17,7 @@ export class UserDetailsComponent implements OnInit {
     datepickerOption: DatePickerOptions;
     datepickerModel: DateModel;
 
+    courseListConfig = { columns: ['Name', 'Lecturer'] }
 
 
     constructor(public _authService: AuthService) {
@@ -24,13 +25,17 @@ export class UserDetailsComponent implements OnInit {
         this.submitted = true;
         this.sexList = [false, false];
         // TBD: config does not work & readonly mode is not working
-        this.datepickerOption = {locale: 'ru', firstWeekdaySunday: false, style:'bold'};
+        this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
     }
 
     ngOnInit() { }
 
     onSubmit() {
         this.submitted = true;
+        this.modelUser.Birthday = new Date(Number.parseInt(this.datepickerModel.day),
+             Number.parseInt(this.datepickerModel.month) - 1, 
+             Number.parseInt(this.datepickerModel.year));
+        console.log('form after submit: ', this.modelUser);
     }
 
     formReset() {
