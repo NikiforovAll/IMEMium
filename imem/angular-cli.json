@@ -20,15 +20,18 @@
       "styles": [
         "../node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
         "styles.css",
         "forms.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
-        
+        "../node_modules/jquery/dist/jquery.js",        
         "../node_modules/gentelella/vendors/jquery/dist/jquery.min.js",
-        "../node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"
-
+        "../node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+      ],
+      "addons": [
+        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
       ],
       "environments": {
         "source": "environments/environment.ts",

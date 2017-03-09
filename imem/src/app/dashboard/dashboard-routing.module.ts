@@ -59,10 +59,10 @@ const routes: Routes = [
                 path: 'students/:id',
                 component: StudentComponent
             },
-            // {
-            //     path: 'calendar',
-            //     component: CalendarComponent
-            // },
+            {
+                path: 'calendar',
+                component: CalendarComponent
+            },
             {
                 path: 'requests',
                 component: RequestComponent

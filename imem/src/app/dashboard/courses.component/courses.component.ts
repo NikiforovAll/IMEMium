@@ -10,4 +10,5 @@ import { NgTableExtensionService } from '../ng-table-extension.service';
     providers: [NgTableExtensionService]
 })
 export class CoursesComponent {
+
 }

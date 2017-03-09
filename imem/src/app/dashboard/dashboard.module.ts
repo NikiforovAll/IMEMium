@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { TopnavComponent } from './topnav.gentelella/topnav-g.component';
 import { SidebarComponent } from './sidebar.gentelella/sidebar-g.component'
@@ -9,15 +9,15 @@ import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.com
 import { StudentsComponent } from './students.component/students.component';
 import { StudentComponent } from './student.component/student.component';
 
-import {LecturesComponent} from './lectures.component/lectures.component';
-import {LectureComponent} from './lecture.component/lecture.component';
+import { LecturesComponent } from './lectures.component/lectures.component';
+import { LectureComponent } from './lecture.component/lecture.component';
 
 
 import { CoursesComponent } from './courses.component/courses.component';
 import { CoursesTableComponent } from './courses-table/courses-table.component';
 import { CourseComponent } from './course.component/course.component';
 
-// import { CalendarComponent } from './calendar.gentelella/calendar.component';
+import { CalendarComponent } from './calendar.gentelella/calendar.component';
 // import { FullCalendarService } from './calendar.gentelella/calendar.service';
 
 import { RequestComponent } from './request-panel/request-panel.component';
@@ -30,6 +30,7 @@ import { PaginationModule } from 'ng2-bootstrap/pagination';
 
 import { DatePickerModule } from 'ng2-datepicker';
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 @NgModule({
     imports: [
         CommonModule,
@@ -37,7 +38,9 @@ import { DatePickerModule } from 'ng2-datepicker';
         DashboardRoutingModule,
         Ng2TableModule,
         DatePickerModule,
-        PaginationModule.forRoot()
+        PaginationModule.forRoot(),
+        FroalaEditorModule.forRoot(),
+        FroalaViewModule.forRoot()
     ],
     declarations: [
         DashboardComponent,
@@ -51,6 +54,7 @@ import { DatePickerModule } from 'ng2-datepicker';
         CoursesComponent,
         CourseComponent,
         LecturesComponent,
+        CalendarComponent,
         LectureComponent,
         CoursesTableComponent
     ],

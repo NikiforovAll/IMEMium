@@ -47,14 +47,24 @@
 
               </div>
 
-              <div *ngIf="_authService.isAdminSession()" class="admin">
+              <div *ngIf="_authService.isAdminSession()" class="admin main_menu_side hidden-print main_menu">
                 <div class="menu_section">
                   <h3>Додаткові Матеріали</h3>
                   <ul class="nav side-menu">
-                    <!--<li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
-                    </li>-->
+                    <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
+                    </li>
                     <li><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів  <span class="fa fa-chevron-right"></span></a>
                     <!--<span class="badge bg-green" style="float:right;">1</span>-->
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div *ngIf="!_authService.isAdminSession()" class="main_menu_side hidden-print main_menu">
+                <div class="menu_section">
+                  <h3>Додаткові Матеріали</h3>
+                  <ul class="nav side-menu">
+                    <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
                     </li>
                   </ul>
                 </div>

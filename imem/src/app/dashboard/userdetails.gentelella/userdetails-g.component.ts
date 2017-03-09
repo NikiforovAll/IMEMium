@@ -17,8 +17,7 @@ export class UserDetailsComponent implements OnInit {
     datepickerOption: DatePickerOptions;
     datepickerModel: DateModel;
 
-    courseListConfig = { columns: ['Name', 'Lecturer'] }
-
+    courseListConfig = { columns: ['Name', 'Lecturer'] };
 
     constructor(public _authService: AuthService) {
         this.modelUser = { id: -1 };
