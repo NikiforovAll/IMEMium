@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
             this._authService.setUser("admin user", "Admin");
             this.router.navigate(['']);
         }else if(param == 1){
-            this._authService.setUser("admin user", "User");
+            this._authService.setUser("student user", "User");
             this.router.navigate(['']);
         }
     }

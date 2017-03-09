@@ -31,6 +31,7 @@ import { PaginationModule } from 'ng2-bootstrap/pagination';
 import { DatePickerModule } from 'ng2-datepicker';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import { StudentsTableComponent } from './students-table/students-table.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -56,7 +57,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
         LecturesComponent,
         CalendarComponent,
         LectureComponent,
-        CoursesTableComponent
+        CoursesTableComponent,
+        StudentsTableComponent
     ],
     providers: [
         // FullCalendarService

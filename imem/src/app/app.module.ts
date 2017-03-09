@@ -1,4 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {
+  LocationStrategy,
+  HashLocationStrategy
+} from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -32,7 +36,7 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

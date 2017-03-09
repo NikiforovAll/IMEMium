@@ -16,7 +16,7 @@ export class AuthCallbackComponent implements OnInit {
     modal.overlay.defaultViewContainer = vcRef;
   }
   ngOnInit() {
-    var isNeedToOpenModal: boolean = false;
+    var isNeedToOpenModal: boolean = true;
     if (isNeedToOpenModal) {
       this.openModal()
         .then(dialog => dialog.result)
