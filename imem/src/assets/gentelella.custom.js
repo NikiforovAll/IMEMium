@@ -100,6 +100,10 @@ $(document).ready(function() {
 
 // Panel toolbox
 $(document).ready(function() {
+    collapsePanelFix();
+    window.collapsePanelFix = collapsePanelFix;
+});
+var collapsePanelFix = function(){
     $('.collapse-link').on('click', function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
             $ICON = $(this).find('i'),
@@ -123,7 +127,7 @@ $(document).ready(function() {
 
         $BOX_PANEL.remove();
     });
-});
+}
 // /Panel toolbox
 
 // Tooltip

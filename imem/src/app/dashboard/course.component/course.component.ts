@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Course } from '../../Models/Course';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { GentelellaService } from '../gentelella.service';
 @Component({
     moduleId: module.id,
     selector: 'course',
     templateUrl: 'course.component.html',
-    providers: []
+    providers: [GentelellaService]
 })
 export class CourseComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class CourseComponent implements OnInit {
     editorContent: Object;
     submitted: boolean;
 
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router, private gentelellaService: GentelellaService) {
         this.submitted = true;
     }
 
@@ -38,6 +38,7 @@ export class CourseComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.id = params['id'];
         });
+        this.gentelellaService.addCollapsablePanels();
     }
 
     toggleLastCommentEditMode() {
