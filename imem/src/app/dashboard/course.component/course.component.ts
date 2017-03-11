@@ -11,7 +11,6 @@ import { GentelellaService } from '../gentelella.service';
 export class CourseComponent implements OnInit {
 
     id: string;
-
     lastCommentToggle: boolean = false;
     private sub: any;
     editorConfig: Object = {

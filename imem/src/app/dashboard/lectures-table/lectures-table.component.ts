@@ -1,31 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Course } from '../../Models/Course';
+import { Component, OnInit, Input} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CourseService } from '../course.service';
 import { NgTableExtensionService } from '../ng-table-extension.service';
-@Component({
-  selector: 'courses-table',
-  templateUrl: './courses-table.component.html',
-  styleUrls: ['./courses-table.component.css'],
-  providers: [NgTableExtensionService, CourseService]
-})
-export class CoursesTableComponent implements OnInit {
-    public courses: Course[];
+import { LectureService } from '../lecture.service';
+import { Lecture } from '../../Models/Lecture';
 
+
+@Component({
+  selector: 'lectures-table',
+  templateUrl: './lectures-table.component.html',
+  styleUrls: ['./lectures-table.component.css'],
+  providers: [NgTableExtensionService, LectureService]
+})
+
+export class LecturesTableComponent implements OnInit {
+
+    public lectures: Lecture[]
     @Input() userId: string;
     @Input() generalColumns: string[];
 
     constructor(
-        private courseService: CourseService,
+        private lectureservice: LectureService,
         private tableExtensionService: NgTableExtensionService,
         private route: ActivatedRoute,
         private router: Router) {
-        this.courses = this.courseService.getCourses(2);
-        this.data = this.courses.map(el => {
-            (<any>el).StartDate = el.StartDate.toLocaleString();
-            (<any>el).EndDate = el.EndDate.toLocaleString();
-            return el;
-        });
+        this.lectures = this.lectureservice.getLectures(50);
+        this.data = this.lectures;
         this.length = this.data.length;
     }
 
@@ -59,33 +58,6 @@ export class CoursesTableComponent implements OnInit {
                 filterString: '',
                 placeholder: ''
             }
-        },
-        {
-            title: 'Початок',
-            name: 'StartDate',
-            filtering:
-            {
-                filterString: '',
-                placeholder: ''
-            }
-        },
-        {
-            title: 'Кінець',
-            name: 'EndDate',
-            filtering:
-            {
-                filterString: '',
-                placeholder: ''
-            }
-        },
-        {
-            title: 'Викладач',
-            name: 'Lecturer',
-            filtering:
-            {
-                filterString: '',
-                placeholder: ''
-            }
         }
     ];
     public config: any = {
@@ -97,7 +69,7 @@ export class CoursesTableComponent implements OnInit {
 
     public onCellClick(data: any): any {
         console.log(data);
-        this.router.navigate(['/dashboard/courses', data.row.id.toString()]);
+        this.router.navigate(['/dashboard/lectures', data.row.id.toString()]);
     }
 
     public onChangeTable(config: any, page: any = { page: this.page, itemsPerPage: this.itemsPerPage }): any {
@@ -116,3 +88,4 @@ export class CoursesTableComponent implements OnInit {
     }
     // ================== TABLE CONFIG ==================(END)
 }
+

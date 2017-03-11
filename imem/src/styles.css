@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+.collapsed{
+  height: auto;
+}
+.collapsed .x_content{
+  display:none;
+}
 .thumbnail {
     padding:0px;
 }

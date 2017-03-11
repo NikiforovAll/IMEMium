@@ -8,20 +8,8 @@ export class Student {
   Course?:string;
   Group?:string;
   Department?:string;
-
-  public getData():string[]{
-      return [ 
-          String(this.id),
-          this.FirstName,
-          this.LastName,
-          this.Faculty,
-          this.Course,
-          StudentStatus[this.StudentStatus],
-        //   String(this.StudentStatus),
-          this.Group,
-          this.Department];
-  }
 }
+
 export enum UserType{
     Student,
     Lecturer
