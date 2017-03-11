@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-// import { Student } from './Models/Student';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 // import { tokenNotExpired } from 'angular2-jwt';
 import { LoginComponent } from './login/login.component';
 export interface IUser {
@@ -13,11 +14,14 @@ export interface IUser {
 @Injectable()
 export class AuthService {
 
-    public userUrl: string
-    public loginNumber: number
-    public currentUser: IUser
+    public userUrl: string;
+    public loginNumber: number;
+    public currentUser: IUser;
 
-    constructor() {
+    private _userStatusCheck: boolean;
+
+    public
+    constructor(private _http: Http) {
         this.loginNumber = 0;
     }
 
@@ -26,22 +30,22 @@ export class AuthService {
     }
 
     public getUserRole(): string {
-        if(!this.currentUser){
+        if (!this.currentUser) {
             this.restoreUser();
         }
         return this.currentUser.role;
         // return JSON.parse(localStorage.getItem('currentUser')).role;
     }
 
-    public getUserName(): string{
-        if(!this.currentUser){
+    public getUserName(): string {
+        if (!this.currentUser) {
             this.restoreUser();
         }
         return this.currentUser.username;
     }
 
-    public getUserEmail(): string{
-        if(!this.currentUser){
+    public getUserEmail(): string {
+        if (!this.currentUser) {
             this.restoreUser();
         }
         return this.currentUser.email;
@@ -60,11 +64,11 @@ export class AuthService {
     }
 
     public setUser(username: string, role: string): void {
-       var user:IUser = {
-                id: username,
-                username: username,
-                role: role
-            }
+        var user: IUser = {
+            id: username,
+            username: username,
+            role: role
+        }
         this.currentUser = user;
         localStorage.setItem('currentUser', JSON.stringify(user));
     }
@@ -85,54 +89,36 @@ export class AuthService {
         // var result = auth2.isSignedIn.get();
         // console.log(result);
         this.loginNumber++;
-        console.log(this.loginNumber);
         return localStorage.getItem('currentUser') !== null;//tokenNotExpired();
     }
-    
+
+    public userStatusCheck(): Promise<any>{
+        return this._http.get('/auth/status')
+            .toPromise()
+            .then(data => data.status)
+            .catch(data => this.handleError)
+    }
+
     private restoreUser(): boolean {
         var user = localStorage.getItem('currentUser');
-        if(user){
+        if (user) {
             this.currentUser = JSON.parse(user);
             return true;
         }
         return false;
-        
     }
-    /*
-    public userAuthToken: string;
-    public userDisplayName: string;
-    public auth2: any;
-    private GoogleAuthManager: any;
-    public googleInit(ctrl: LoginComponent) {
-        let that = this;
-        gapi.load('auth2', function () {
-            that.auth2 = gapi.auth2.init({
-                client_id: '142345956360-ut8b46bo0sanqu66gjfj2pnp6ked96v0.apps.googleusercontent.com',
-                // cookiepolicy: 'single_host_origin',
-                scope: 'profile email https://www.googleapis.com/auth/drive'
-            });
-            that.attachSignin(document.getElementById('googleBtn'), ctrl);
-        });
-    }
-    public attachSignin(element, controller: LoginComponent) {
-        let that = this;
-        this.auth2.attachClickHandler(element, {},
-            function (googleUser) {
 
-                let profile = googleUser.getBasicProfile();
-                let userDisplayName = googleUser.getBasicProfile().getName();
-                let thisuserAuthToken = googleUser.getAuthResponse().id_token;
-                controller._authService.setUser(thisuserAuthToken, userDisplayName);
-                // localStorage.setItem('currentUser', JSON.stringify({ token: thisuserAuthToken, name: userDisplayName }));
-                // console.log('Token || ' + googleUser.getAuthResponse().id_token);
-                // console.log('ID: ' + profile.getId());
-                // console.log('Name: ' + profile.getName());
-                // console.log('Image URL: ' + profile.getImageUrl());
-                // console.log('Email: ' + profile.getEmail());
-                controller.login();
-            }, function (error) {
-                alert(JSON.stringify(error));
-            });
+
+    private handleError (error: Response | any) {
+    // In a real world app, we might use a remote logging infrastructure
+    let errMsg: string;
+    if (error instanceof Response) {
+        const body = error.json() || '';
+        const err = body.error || JSON.stringify(body);
+        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+        errMsg = error.message ? error.message : error.toString();
     }
-    */
+    return Promise.reject(errMsg);
+    }
 }

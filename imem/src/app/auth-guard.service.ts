@@ -10,7 +10,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private auth: AuthService, private router: Router) { }
 
   canActivate() {
-    console.log('canActivate call');
+    this.auth.userStatusCheck()
+      .then(
+        data => console.log('userStatusCheck result', data))
+      .catch( 
+        error => error
+      );
+    // set status flag in auth service
     if (this.auth.loggedIn()) {
       return true;
     } else {

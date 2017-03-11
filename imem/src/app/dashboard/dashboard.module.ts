@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { HttpModule, RequestOptions } from '@angular/http';
+import { CustomRequestOptionsService } from '../custom-request-options.service';
+
+
 import { TopnavComponent } from './topnav.gentelella/topnav-g.component';
 import { SidebarComponent } from './sidebar.gentelella/sidebar-g.component'
 import { FooterComponent } from './footer.gentelella/footer-g.component';
@@ -37,6 +41,7 @@ import { LecturesTableComponent } from './lectures-table/lectures-table.componen
     imports: [
         CommonModule,
         FormsModule,
+        HttpModule,
         DashboardRoutingModule,
         Ng2TableModule,
         DatePickerModule,
@@ -64,6 +69,7 @@ import { LecturesTableComponent } from './lectures-table/lectures-table.componen
     ],
     providers: [
         // FullCalendarService
+        { provide: RequestOptions, useClass: CustomRequestOptionsService }
     ]
 })
 export class DashboardModule { }

@@ -7,11 +7,11 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
-   ngOnInit(){
-      // var gentelellaInit = require('../assets/gentelella.custom.js');
-      // gentelellaInit.init();
-   }
-   onDeactivate() {
+  ngOnInit() {
+    // var gentelellaInit = require('../assets/gentelella.custom.js');
+    // gentelellaInit.init();
+  }
+  onDeactivate() {
     document.body.scrollTop = 0;
   }
 
