@@ -99,10 +99,6 @@ $(document).ready(function() {
 // /Sidebar
 
 // Panel toolbox
-$(document).ready(function() {
-    collapsePanelFix();
-    window.collapsePanelFix = collapsePanelFix;
-});
 var collapsePanelFix = function(){
     $('.collapse-link').on('click', function() {
         var $BOX_PANEL = $(this).closest('.x_panel'),
@@ -118,7 +114,9 @@ var collapsePanelFix = function(){
             $BOX_CONTENT.slideToggle(200); 
             $BOX_PANEL.css('height', 'auto');  
         }
-
+        // $('.collapsed').css('height', 'auto');
+        // $('.collapsed').find('.x_content').css('display', 'none');
+        // $('.collapsed').find('i').toggleClass('fa-chevron-up fa-chevron-down');
         $ICON.toggleClass('fa-chevron-up fa-chevron-down');
     });
 
@@ -128,6 +126,11 @@ var collapsePanelFix = function(){
         $BOX_PANEL.remove();
     });
 }
+$(document).ready(function() {
+    window.collapsePanelFix = collapsePanelFix;
+    collapsePanelFix();
+});
+
 // /Panel toolbox
 
 // Tooltip

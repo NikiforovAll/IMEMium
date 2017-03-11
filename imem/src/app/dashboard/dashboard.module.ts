@@ -31,12 +31,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 // import { DataTableModule } from 'angular-2-data-table';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap/pagination';
-
 import { DatePickerModule } from 'ng2-datepicker';
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import { StudentsTableComponent } from './students-table/students-table.component';
 import { LecturesTableComponent } from './lectures-table/lectures-table.component';
+
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
     imports: [
         CommonModule,
@@ -45,6 +46,7 @@ import { LecturesTableComponent } from './lectures-table/lectures-table.componen
         DashboardRoutingModule,
         Ng2TableModule,
         DatePickerModule,
+        ChartsModule,
         PaginationModule.forRoot(),
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot()

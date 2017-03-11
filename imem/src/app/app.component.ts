@@ -11,8 +11,6 @@ export class AppComponent {
     // var gentelellaInit = require('../assets/gentelella.custom.js');
     // gentelellaInit.init();
   }
-  onDeactivate() {
-    document.body.scrollTop = 0;
-  }
+
 
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { Course } from '../../Models/Course';
+import { Course, CourseStatusList } from '../../Models/Course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
+import { DateModel, DatePickerOptions } from 'ng2-datepicker';
+import { AuthService } from '../../auth.service'
+
 @Component({
     moduleId: module.id,
     selector: 'course',
@@ -11,24 +14,34 @@ import { GentelellaService } from '../gentelella.service';
 export class CourseComponent implements OnInit {
 
     id: string;
-    lastCommentToggle: boolean = false;
     private sub: any;
-    editorConfig: Object = {
-        height: 200,
-        toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '-',
-            'specialCharacters', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-',
-            'insertFile', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-        pluginsEnabled: ['fontFamily', 'file', 'lists', 'save', 'fontSize']
-    };
-    editorContent: Object;
     submitted: boolean;
+    modelCourse: Course;
 
-    constructor(private route: ActivatedRoute, private router: Router, private gentelellaService: GentelellaService) {
+
+    datepickerOption: DatePickerOptions;
+    // TBD: bind to model 
+    datepickerModelStartDate: DateModel;
+    datepickerModelEndDate: DateModel;
+
+    selectedCourseStatus: any;
+    _courseStatusList: any[];
+
+    constructor(
+            private route: ActivatedRoute,
+            private router: Router,
+            private _authService: AuthService,
+            private gentelellaService: GentelellaService) {
         this.submitted = true;
+        this._courseStatusList = CourseStatusList;
+        this.modelCourse = { id: -1, Name: 'Test Course' };
+        this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
+
     }
 
     onSubmit() {
         this.submitted = true;
+        console.log('this.modelCourse ', this.modelCourse);
     }
     formReset() {
         this.submitted = false;
@@ -40,10 +53,12 @@ export class CourseComponent implements OnInit {
         this.gentelellaService.addCollapsablePanels();
     }
 
-    toggleLastCommentEditMode() {
-        this.lastCommentToggle = !this.lastCommentToggle;
-    }
     private navigateToParent(): void {
         this.router.navigate(['/dashboard/courses']);
+    }
+    private onChangeObj(newObj) {
+        console.log(newObj);
+        // TBD: bind to model 
+        this.selectedCourseStatus = newObj;
     }
 }

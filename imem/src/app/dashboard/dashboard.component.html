@@ -4,7 +4,7 @@
       <sidebar-g></sidebar-g>
       <topnav-g></topnav-g>
       <div class="right_col" id="right-col" role="main">
-      <router-outlet></router-outlet>
+      <router-outlet (deactivate)="onDeactivate()"></router-outlet>
       </div>
       <footer-g></footer-g>
     </div>

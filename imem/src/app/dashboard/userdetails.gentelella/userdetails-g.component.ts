@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, IUser } from '../../auth.service';
 import { PortalUser, SexType } from '../../Models/User';
-
 import { DateModel, DatePickerOptions } from 'ng2-datepicker';
 @Component({
     moduleId: module.id,

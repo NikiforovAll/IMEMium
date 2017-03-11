@@ -12,7 +12,9 @@ export class DashboardComponent implements OnInit {
       var gentelellaInit = require('../../assets/gentelella.custom.js');
       gentelellaInit.init();
     }
-    ngAfterViewInit(){
-        
+    ngAfterViewInit(){        
+    }
+    onDeactivate() {
+        document.body.scrollTop = 0;
     }
 }

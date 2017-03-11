@@ -19,20 +19,58 @@
                 <form class="form-horizontal form-label-left"  #courseForm="ngForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label>Назва</label>
-                        <input class="form-control" value="Базовий курс" required [readonly]="submitted">
+                        <input class="form-control"
+                            [(ngModel)]="modelCourse.Name"
+                            name="Name"
+                            required [readonly]="submitted">
                     </div>
                     <div class="form-group">
                         <label>Опис</label>
                         <textarea style="height:200px;"
                             class="resizable_textarea form-control"
                             [readonly]="submitted"
-                            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></textarea>
+                            name="Description"
+                            [(ngModel)]="modelCourse.Description"
+                            placeholder="Введіть опис тут"></textarea>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label class="control-label col-md-1 col-sm-3 col-xs-12" for="first-name">Початок</label>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <ng2-datepicker [options]="datepickerOption" [(ngModel)]="datepickerModelStartDate"
+                            name="datepickerModelStartDate" required
+                            ></ng2-datepicker>
+                        </div>
+                        <label class="control-label col-md-1 col-sm-3 col-xs-12" for="first-name">Кінець</label>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <ng2-datepicker [options]="datepickerOption" [(ngModel)]="datepickerModelEndDate"
+                            name="datepickerModelEndDate" required
+                            ></ng2-datepicker>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1 col-sm-3 col-xs-12" for="first-name">Викладач</label>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        <input type="text" [(ngModel)]="modelCourse.Lecturer" name="Lecturer"
+                             [readonly]="submitted" class="form-control col-md-4 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                     <label class="control-label col-md-1 col-sm-3 col-xs-12">Статус</label>
+                      <div class="col-md-4 col-sm-9 col-xs-12">
+                            <select [ngModel]="selectedCourseStatus" 
+                                    (ngModelChange)="onChangeObj($event)" 
+                                    name="courseStatus"
+                                    [disabled]="submitted"
+                                    class="form-control col-md-4 col-xs-12">
+                            <option [ngValue]="i" *ngFor="let i of _courseStatusList">{{i.name}}</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group" align="center"  [hidden]="submitted">
                         <button type="submit" class="btn btn-success" [disabled]="!courseForm.form.valid">Підтвердити</button>
                     </div>
                 </form>
-                <div class="form-group" align="center" [hidden]="!submitted">
+                <div class="form-group" align="center" [hidden]="!submitted" *ngIf="_authService.isAdminSession()">
                     <a class="btn btn-success"  (click)="formReset()"><i class="fa fa-edit m-right-xs"></i>Редагувати</a>
                 </div>
                 <div class="clearfix"></div>
@@ -72,14 +110,6 @@
             </div>
             <div class="x_content">
             <students-table></students-table>
-            <div class="col-md-10 col-center" [hidden]="!lastCommentToggle">
-                <div [froalaEditor]="editorConfig" [(froalaModel)]="editorContent"></div>
-                <div class="form-group" align="center" [hidden]="!lastCommentToggle">
-                    <a class="btn btn-success"  (click)="toggleLastCommentEditMode()"><i class="fa fa-edit m-right-xs"></i>Підтвердити</a>
-                </div>   
-            </div>
-            <div class="col-md-2">
-            </div>         
             </div>
         </div>
     </div>

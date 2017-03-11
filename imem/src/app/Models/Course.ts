@@ -1,6 +1,7 @@
 export class Course {
     id: number;
     Name: string;
+    Description?: string;
     StartDate?: Date;
     EndDate?: Date;
     Lecturer?: string;
@@ -12,3 +13,4 @@ export class Course {
 //     finished,
 //     stopped
 // }
+export const CourseStatusList:any[] = [{name:'Активний', value: 'InProgress'}, {name:'Закінчений', value: 'Finished'}];
