@@ -22,11 +22,11 @@ import { RequestComponent } from './request-panel/request-panel.component';
 
 import { AuthGuard } from '../auth-guard.service'
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-    },
+    // {
+    //     path: '',
+    //     redirectTo: 'dashboard',
+    //     pathMatch: 'full'
+    // },
     {
         path: 'dashboard',
         component: DashboardComponent,

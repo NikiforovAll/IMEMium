@@ -83,6 +83,9 @@ export class AuthService {
     }
 
     public logIn(): Promise<boolean> {
+        // return new Promise((resolve, reject) => {
+        //         resolve(true);
+        //     });
         this.loginNumber++;
         if (this._userStatusCheck) {
             return new Promise((resolve, reject) => {
