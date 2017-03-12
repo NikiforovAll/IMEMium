@@ -14,6 +14,20 @@ import { GentelellaService } from '../gentelella.service';
 })
 export class StudentComponent implements OnInit {
 
+      // Doughnut
+    public doughnutChartLabels:string[] = ['Зупинено', 'У процесі', 'Закінчено'];
+    public doughnutChartData:number[] = [1, 2, 1];
+    public doughnutChartType:string = 'doughnut';
+    public backgroundColor:any[] = [
+            { // grey
+                    backgroundColor: [
+                        '#b21c1e', 
+                        '#4678af',
+                        '#2d962e'],
+                    borderColor: 'rgba(148,159,177,1)'
+            }
+            ];
+
     id: string;
     submitted: boolean;
     modelUser: PortalUser;

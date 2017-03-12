@@ -114,24 +114,26 @@
 </div>
 <div class="row">
     <div class="col-md-12" >
-        <div class="x_panel">
+        <div class="x_panel collapsed">
             <div class="x_title">
             <h2>Статистика <small></small></h2>
             <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a>
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
             </ul>
             <div class="clearfix"></div>
             </div>
             <div class="x_content">
-				<!--<div style="display: block">
+				<div style="display: block">
+				
 				<canvas baseChart
 							[data]="doughnutChartData"
 							[labels]="doughnutChartLabels"
 							[chartType]="doughnutChartType"
-							(chartHover)="chartHovered($event)"
-							(chartClick)="chartClicked($event)"></canvas>
-				</div>-->
+							[colors]="backgroundColor"
+							height="100px;">
+							</canvas>
+				</div>
             </div>
         </div>
     </div>

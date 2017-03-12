@@ -19,8 +19,8 @@ export class AuthService {
     public currentUser: IUser;
 
     private _userStatusCheck: boolean;
+    private _userLoggedIn: boolean;
 
-    public
     constructor(private _http: Http) {
         this.loginNumber = 0;
     }
