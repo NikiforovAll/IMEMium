@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "/home/alexcey/Nikiforov/IMEMium-backend/static",
+      "outDir": "/home/alexcey/go/src/imemium",
       "assets": [
         "assets",
         "favicon.ico"

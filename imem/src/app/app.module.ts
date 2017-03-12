@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
-
+import { CustomHttpService } from './custom-http.service'
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
@@ -36,7 +36,11 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [AuthGuard, AuthService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    AuthGuard,
+    AuthService,
+    CustomHttpService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

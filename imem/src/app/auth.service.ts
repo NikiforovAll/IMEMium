@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { CustomHttpService } from './custom-http.service'
 import 'rxjs/add/operator/toPromise';
-// import { tokenNotExpired } from 'angular2-jwt';
 import { LoginComponent } from './login/login.component';
 export interface IUser {
     id: string;
@@ -21,7 +21,7 @@ export class AuthService {
     private _userStatusCheck: boolean;
     private _userLoggedIn: boolean;
 
-    constructor(private _http: Http) {
+    constructor(private _customHttp: CustomHttpService) {
         this.loginNumber = 0;
     }
 
@@ -93,10 +93,7 @@ export class AuthService {
     }
 
     public userStatusCheck(): Promise<any>{
-        return this._http.get('/auth/status')
-            .toPromise()
-            .then(data => data.status)
-            .catch(data => this.handleError)
+        return this._customHttp.makeRequest('GET', '/posts/1');
     }
 
     private restoreUser(): boolean {
@@ -106,19 +103,5 @@ export class AuthService {
             return true;
         }
         return false;
-    }
-
-
-    private handleError (error: Response | any) {
-    // In a real world app, we might use a remote logging infrastructure
-    let errMsg: string;
-    if (error instanceof Response) {
-        const body = error.json() || '';
-        const err = body.error || JSON.stringify(body);
-        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-        errMsg = error.message ? error.message : error.toString();
-    }
-    return Promise.reject(errMsg);
     }
 }
