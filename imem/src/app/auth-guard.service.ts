@@ -11,12 +11,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     canActivate(): Promise<boolean> {
         // set status flag in auth service
         return this.auth.logIn()
-            .then(data =>
-                new Promise((resolve, reject) => {
+            .then(data =>{
+                return new Promise((resolve, reject) => {
                     resolve(data);
                 })
+            }
             )
             .catch(error => {
+                this.router.navigate(['']);
                 return new Promise((resolve, reject) => {
                     resolve(false);
                 })
