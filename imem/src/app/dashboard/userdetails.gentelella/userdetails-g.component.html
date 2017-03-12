@@ -16,7 +16,7 @@
                 <div class="profile_img">
                   <div id="crop-avatar">
                     <!-- Current avatar -->
-                    <img class="img-responsive avatar-view" src="http://lorempixel.com/g/200/200/" alt="Avatar" title="Change the avatar">
+                    <img class="img-responsive avatar-view" [src]="_authService.getUserPicture()" alt="Avatar" title="Change the avatar">
                   </div>
                 </div>
                 <!--<h3>{{_authService.sessionUser.email}}</h3>-->

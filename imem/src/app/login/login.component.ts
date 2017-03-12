@@ -13,30 +13,6 @@ import { Router } from '@angular/router';
     selector: 'login-app',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css']
-    // ,
-    // animations: [
-    //     trigger('routeAnimation', [
-    //         // state('*',
-    //         //     style({
-    //         //         opacity: 1,
-    //         //         transform: 'translateX(0)'
-    //         //     })
-    //         // ),
-    //         transition('void => *', [
-    //             style({
-    //                 opacity: 0,
-    //                 transform: 'translateX(-100%)'
-    //             }),
-    //             animate(delay + 'ease-in')
-    //         ]),
-    //         transition('* => void', [
-    //             animate(delay + 'ease-out', style({
-    //                 opacity: 0,
-    //                 transform: 'translateX(100%)'
-    //             }))
-    //         ])
-    //     ])
-    // ]
 })
 export class LoginComponent implements OnInit {
 
@@ -53,29 +29,21 @@ export class LoginComponent implements OnInit {
         private router: Router) { }
 
     isShowError = false;
-    
-    // login() {
-    //     this.isShowError = !this._authService.login(this.user.email, this.user.password);
-    //     if (!this.isShowError) {
-    //         // this.router.navigate(['']);
-    //     }
-    // }
-
 
     ngOnInit() { }
 
     ngAfterViewInit(){
         // this._authService.googleInit(this);
     }
-    // TBD: change to real world example
     public login(param: number){
-        if(param == 2){
-            this._authService.setUser("admin user", "Admin");
-            this.router.navigate(['']);
-        }else if(param == 1){
-            this._authService.setUser("student user", "User");
-            this.router.navigate(['']);
-        }
+         this._authService.login();
+        // if(param == 2){
+        //     this._authService.setUser("admin user", "Admin");
+        //     this.router.navigate(['']);
+        // }else if(param == 1){
+        //     this._authService.setUser("student user", "User");
+        //     this.router.navigate(['']);
+        // }
     }
 
 }

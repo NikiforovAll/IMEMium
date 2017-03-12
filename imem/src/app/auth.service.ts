@@ -3,6 +3,11 @@ import { Http, Response } from '@angular/http';
 import { CustomHttpService } from './custom-http.service'
 import 'rxjs/add/operator/toPromise';
 import { LoginComponent } from './login/login.component';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+
 export interface IUser {
     id: string;
     email?: string;
@@ -11,97 +16,101 @@ export interface IUser {
     role?: string;
 }
 
+export interface PortalUser {
+    id: number;
+    google_id: string;
+    email: string;
+    type: string;
+    status: string;
+    given_name: string;
+    family_name: string;
+    picture: string;
+}
+
 @Injectable()
 export class AuthService {
 
     public userUrl: string;
     public loginNumber: number;
-    public currentUser: IUser;
+    public currentUser: PortalUser;
 
-    private _userStatusCheck: boolean;
+    private _userStatusCheck: boolean = false;
     private _userLoggedIn: boolean;
 
-    constructor(private _customHttp: CustomHttpService) {
+    constructor(private _customHttp: CustomHttpService,
+        private _http: Http) {
         this.loginNumber = 0;
     }
 
     public isAdminSession() {
-        return this.getUserRole() == 'Admin';
+        return this.getUserRole() == 'admin';
     }
 
     public getUserRole(): string {
         if (!this.currentUser) {
-            this.restoreUser();
+            return '';
         }
-        return this.currentUser.role;
-        // return JSON.parse(localStorage.getItem('currentUser')).role;
+        return this.currentUser.type;
     }
 
     public getUserName(): string {
         if (!this.currentUser) {
-            this.restoreUser();
+            return '';
         }
-        return this.currentUser.username;
+        return this.currentUser.given_name;
     }
 
     public getUserEmail(): string {
         if (!this.currentUser) {
-            this.restoreUser();
+            return '';
         }
         return this.currentUser.email;
     }
 
-    public login(email: string, password: string, role: string): boolean {
-        // console.log('login');
-        // let filter = (user:IUser) => {return user.email === email && user.password === password};
-        // if (this._users.some(filter)) {
-        //     this.sessionUser =  this._users.find(filter);
-        //     localStorage.setItem('id_token', this.sessionUser.role);
-        //     return true;
-        // }
-        // return false;
-        return true;
+    public getUserPicture(): string {
+        if (!this.currentUser) {
+            return '';
+        }
+        return this.currentUser.picture;
     }
 
-    public setUser(username: string, role: string): void {
-        var user: IUser = {
-            id: username,
-            username: username,
-            role: role
-        }
-        this.currentUser = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+    public login() {
+        window.location.href = '/auth/login';
     }
 
     public logout(): void {
-        localStorage.removeItem("currentUser")
-        // console.log('logout as ',this.sessionUser)  ;
-        // this.sessionUser = null;
-        // var auth2 = gapi.auth2.getAuthInstance();
-        // auth2.signOut().then(function () {
-        //     localStorage.removeItem('currentUser');
-        //     console.log('User signed out.');
-        // });
+        window.location.href = '/auth/logout';
     }
-    public loggedIn(): boolean {
-        // GoogleAuth.isSignedIn.get()
-        // var auth2 = gapi.auth2.getAuthInstance();
-        // var result = auth2.isSignedIn.get();
-        // console.log(result);
+
+    public logIn(): Promise<boolean> {
         this.loginNumber++;
-        return localStorage.getItem('currentUser') !== null;//tokenNotExpired();
-    }
-
-    public userStatusCheck(): Promise<any>{
-        return this._customHttp.makeRequest('GET', '/posts/1');
-    }
-
-    private restoreUser(): boolean {
-        var user = localStorage.getItem('currentUser');
-        if (user) {
-            this.currentUser = JSON.parse(user);
-            return true;
+        if (this._userStatusCheck) {
+            return new Promise((resolve, reject) => {
+                resolve(this.currentUser != undefined && this.currentUser !== null);
+            });
+        } else {
+            return this.restoreUser();
         }
-        return false;
+    }
+
+    public userStatusCheck(): Promise<any> {
+        return this._customHttp.makeRequest('GET', '/auth/status');
+    }
+
+    public restoreUser(): Promise<boolean> {
+        this._userStatusCheck = true;
+        return this.userStatusCheck()
+            .then(
+            data => {
+                this.currentUser = data;
+                this._userStatusCheck = true;
+                return new Promise((resolve, reject) => {
+                    resolve(true);
+                });
+            })
+            .catch(
+            error => {
+                throw error;
+            });
     }
 }
