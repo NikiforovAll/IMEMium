@@ -101,7 +101,6 @@ export class AuthService {
     }
 
     public restoreUser(): Promise<boolean> {
-        this._userStatusCheck = true;
         return this.userStatusCheck()
             .then(
             data => {
