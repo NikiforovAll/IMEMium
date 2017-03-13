@@ -39,9 +39,6 @@ export class LectureComponent implements OnInit {
         this.gentelellaService.addCollapsablePanels();
     }
 
-    toggleLastCommentEditMode() {
-        this.lastCommentToggle = !this.lastCommentToggle;
-    }
     private navigateToParent(): void {
         // TBD: change to actual course id
         this.router.navigate(['/dashboard/courses', 1]);

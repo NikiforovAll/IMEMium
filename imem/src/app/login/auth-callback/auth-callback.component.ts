@@ -21,8 +21,6 @@ export class AuthCallbackComponent implements OnInit {
     private customHttp: CustomHttpService,
     public router: Router) {
     modal.overlay.defaultViewContainer = vcRef;
-  }
-  ngOnInit() {
     this.authService.restoreUser()
       .then(
       data => {
@@ -38,8 +36,10 @@ export class AuthCallbackComponent implements OnInit {
           .catch(result => {
             this.router.navigate(['login'])
           });
-      }
-      );
+      });
+  }
+  ngOnInit() {
+
   }
 
   public openModal() {

@@ -53,11 +53,11 @@ export class AuthService {
         return this.currentUser.type;
     }
 
-    public getUserName(): string {
+    public getUserName():any{
         if (!this.currentUser) {
             return '';
         }
-        return this.currentUser.given_name;
+        return {given_name: this.currentUser.given_name, family_name: this.currentUser.family_name};
     }
 
     public getUserEmail(): string {

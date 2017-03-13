@@ -1,0 +1,32 @@
+<template ngFor let-item [ngForOf]="commentList">
+  <div class="row comment">
+    <div class="col-sm-1">
+      <div class="thumbnail" style="height: auto;">
+        <img class="img-responsive user-photo" [src]="item.PictureUrl">
+      </div>
+      <!-- /thumbnail -->
+    </div>
+    <!-- /col-sm-1 -->
+    <div class="col-sm-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>{{item.Author}}</strong> <span class="text-muted">{{item.DateLabel}}</span>
+        </div>
+        <div class="panel-body">
+          <div class="message" [froalaView]="item.EditorContent"></div>
+        </div>
+        <!-- /panel-body -->
+      </div>
+      <!-- /panel panel-default -->
+    </div>
+    <!-- /col-sm-5 -->
+  </div>
+</template>
+<!-- /row -->
+<!--<div class="message" [froalaView]="EditorContent"></div>-->
+<div class="col-md-10 col-center" [hidden]="!lastCommentToggle">
+  <div [froalaEditor]="editorConfig" [(froalaModel)]="editorContent"></div>
+  <div class="form-group" id="commentBtn" align="center" [hidden]="!lastCommentToggle" style="margin-top: 20px;">
+    <a class="btn btn-success" (click)="addComment()"><i class="fa fa-edit m-right-xs"></i>Підтвердити</a>
+  </div>
+</div>

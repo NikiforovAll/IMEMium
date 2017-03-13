@@ -90,7 +90,8 @@ export class CourseComponent implements OnInit {
         modal.open()
         .then(dialog => dialog.result)
         .then(result => {
-          this.router.navigate(['/dashboard/courses'])
+          this.navigateToParent();
+          this.gentelellaService.fixModalHeightAfterLongQuery();
         })
         .catch(result => {
         });

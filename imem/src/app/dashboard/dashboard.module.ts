@@ -38,6 +38,7 @@ import { StudentsTableComponent } from './students-table/students-table.componen
 import { LecturesTableComponent } from './lectures-table/lectures-table.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { CommentSectionComponent } from './comment-section/comment-section.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -67,7 +68,8 @@ import { ChartsModule } from 'ng2-charts';
         LectureComponent,
         CoursesTableComponent,
         StudentsTableComponent,
-        LecturesTableComponent
+        LecturesTableComponent,
+        CommentSectionComponent
     ],
     providers: [
         // FullCalendarService

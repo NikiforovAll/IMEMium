@@ -19,7 +19,11 @@ export class UserDetailsComponent implements OnInit {
     courseListConfig = { columns: ['Name', 'Lecturer'] };
 
     constructor(public _authService: AuthService) {
-        this.modelUser = { id: -1 };
+        this.modelUser = {
+            id: -1,
+            FirstName: _authService.getUserName().given_name,
+            LastName: _authService.getUserName().family_name
+        };
         this.submitted = true;
         this.sexList = [false, false];
         // TBD: config does not work & readonly mode is not working
@@ -31,8 +35,8 @@ export class UserDetailsComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.modelUser.Birthday = new Date(Number.parseInt(this.datepickerModel.day),
-             Number.parseInt(this.datepickerModel.month) - 1, 
-             Number.parseInt(this.datepickerModel.year));
+            Number.parseInt(this.datepickerModel.month) - 1,
+            Number.parseInt(this.datepickerModel.year));
         console.log('form after submit: ', this.modelUser);
     }
 

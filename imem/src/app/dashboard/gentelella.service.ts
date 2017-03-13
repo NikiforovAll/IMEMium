@@ -12,4 +12,8 @@ export class GentelellaService {
       (<any>window).collapsePanelFix();
     }
   }
+  // https://github.com/shlomiassaf/angular2-modal/issues/258
+  public fixModalHeightAfterLongQuery(){
+    document.body.classList.remove('modal-open')
+  }
 }
