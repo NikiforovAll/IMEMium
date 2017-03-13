@@ -49,7 +49,6 @@ export class CommentSectionComponent implements OnInit {
     }
     this.editorContent = '';
     this.lastCommentToggle = !this.lastCommentToggle;
-    // console.log(this.editorContent);
   }
   public toggleCommentSection() {
     if(!this.lastCommentToggle){
