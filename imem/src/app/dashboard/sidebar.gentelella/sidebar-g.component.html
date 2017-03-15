@@ -43,38 +43,18 @@
                   </li>
                 </ul>
               </div>
-              <div *ngIf="!_authService.isAdminSession()" class="student">
-
-              </div>
-
-              <div *ngIf="_authService.isAdminSession()" class="admin main_menu_side hidden-print main_menu">
+              <div class="admin main_menu_side hidden-print main_menu">
                 <div class="menu_section">
                   <h3>Додаткові Матеріали</h3>
                   <ul class="nav side-menu">
                     <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
                     </li>
-                    <li><a routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів  <span class="fa fa-chevron-right"></span></a>
+                    <li><a *appAppLayout="'sidebarScope.requestPanel'" routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів  <span class="fa fa-chevron-right"></span></a>
                     <!--<span class="badge bg-green" style="float:right;">1</span>-->
                     </li>
                   </ul>
                 </div>
               </div>
-
-              <div *ngIf="!_authService.isAdminSession()" class="main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                  <h3>Додаткові Матеріали</h3>
-                  <ul class="nav side-menu">
-                    <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!--<ng-content *ngIf="!_authService.isAdminSession()"  select=".student"> 
-              </ng-content>-->
-              <!--<ng-content *ngIf="_authService.isAdminSession()" select=".admin"> -->
-              <!--</ng-content>-->
-
             </div>
             <!-- /sidebar menu -->
 
@@ -89,7 +69,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-              <a (click)="logout()" data-placement="top" title="Logout" routerLink="/login">
+              <a (click)="logout()" data-placement="top" title="Logout">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>

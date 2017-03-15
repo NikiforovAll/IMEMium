@@ -39,6 +39,7 @@ import { LecturesTableComponent } from './lectures-table/lectures-table.componen
 
 import { ChartsModule } from 'ng2-charts';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
+import { AppLayoutDirective } from './app-layout.directive';
 @NgModule({
     imports: [
         CommonModule,
@@ -69,7 +70,8 @@ import { CommentSectionComponent } from './comment-section/comment-section.compo
         CoursesTableComponent,
         StudentsTableComponent,
         LecturesTableComponent,
-        CommentSectionComponent
+        CommentSectionComponent,
+        AppLayoutDirective
     ],
     providers: [
         // FullCalendarService

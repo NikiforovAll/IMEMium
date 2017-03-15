@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { CustomHttpService } from './custom-http.service'
 import 'rxjs/add/operator/toPromise';
 import { LoginComponent } from './login/login.component';
+import { environment } from 'environments/environment';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
@@ -17,7 +18,7 @@ export interface IUser {
 }
 
 export interface PortalUser {
-    id: number;
+    // id: number;
     google_id: string;
     email: string;
     type: string;
@@ -53,11 +54,18 @@ export class AuthService {
         return this.currentUser.type;
     }
 
-    public getUserName():any{
+    public getUserRoleLocal(locale: string): string {
+        return {
+            student: 'Студент',
+            admin: 'Адміністратор' 
+        }[this.getUserRole()];
+    }
+
+    public getUserName(): any {
         if (!this.currentUser) {
             return '';
         }
-        return {given_name: this.currentUser.given_name, family_name: this.currentUser.family_name};
+        return { given_name: this.currentUser.given_name, family_name: this.currentUser.family_name };
     }
 
     public getUserEmail(): string {
@@ -87,6 +95,20 @@ export class AuthService {
         //         resolve(true);
         //     });
         this.loginNumber++;
+        if (!environment.production && environment.authMock) {
+            this.currentUser = {
+                google_id: '-1',
+                email: 'mock@email.com',
+                type: 'student',
+                status: 'pending',
+                given_name: 'Mock',
+                family_name: 'Mock',
+                picture: ''
+            }
+            return new Promise((resolve, reject) => {
+                resolve(true);
+            });
+        }
         if (this._userStatusCheck) {
             return new Promise((resolve, reject) => {
                 resolve(this.currentUser != undefined && this.currentUser !== null);
@@ -94,6 +116,13 @@ export class AuthService {
         } else {
             return this.restoreUser();
         }
+
+    }
+
+    public LogInMock() {
+        return new Promise((resolve, reject) => {
+            resolve(true);
+        });
     }
 
     public userStatusCheck(): Promise<any> {

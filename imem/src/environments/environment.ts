@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  authMock: true,
   envName: 'development',
   baseUrl: 'http://localhost:3000'
 };
