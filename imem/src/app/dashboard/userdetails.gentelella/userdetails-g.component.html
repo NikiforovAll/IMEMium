@@ -8,7 +8,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Головна сторінка учасника порталу</h2>
+          <h2>Головна сторінка учасника порталу<span *appLayout="'userDetailsScope.pendingStatus'" style="color: darkred">  (Заявка обробляється)</span></h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -28,7 +28,7 @@
               </li>
             </ul>
 
-            <a class="btn btn-success" (click)="formReset()"><i class="fa fa-edit m-right-xs"></i>Редагувати Профіль</a>
+            <a class="btn btn-success" (click)="formReset()" *appLayout="'userDetailsScope.editProfileButton'"><i class="fa fa-edit m-right-xs"></i>Редагувати Профіль</a>
             <br/>
           </div>
           <div class="col-md-9 col-sm-9 col-xs-12">
@@ -36,7 +36,7 @@
               <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#tab_content1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Анкетні Дані</a>
                 </li>
-                <li *appAppLayout="'userdetails.courseTab'" role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Курси</a>
+                <li *appLayout="'userDetailsScope.courseTab'" role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Курси</a>
                 </li>
               </ul>
               <div id="myTabContent" class="tab-content">

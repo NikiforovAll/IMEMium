@@ -29,14 +29,14 @@
                       <li><a href="#">Option1</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/dashboard/courses"><i class="fa fa-book"></i> Навчальні курси <span class="fa fa-chevron-right"></span></a>
+                  <li><a *appLayout="'sidebarScope.coursePanel'" routerLink="/dashboard/courses"><i class="fa fa-book"></i> Навчальні курси <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a href="#">Course1</a></li>
                       <li><a href="#">Course2</a></li>
                       <li><a href="#">Course2</a></li>
                     </ul>-->
                   </li>
-                  <li><a routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Студенти <span class="fa fa-chevron-right"></span></a>
+                  <li><a *appLayout="'sidebarScope.studentPanel'" routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Студенти <span class="fa fa-chevron-right"></span></a>
                     <!--<ul class="nav child_menu">
                       <li><a routerLink="/Students"href="#">Preview</a></li>
                     </ul>-->
@@ -45,11 +45,11 @@
               </div>
               <div class="admin main_menu_side hidden-print main_menu">
                 <div class="menu_section">
-                  <h3>Додаткові Матеріали</h3>
+                  <h3 *appLayout="'sidebarScope.calendarPanel'">Додаткові Матеріали</h3>
                   <ul class="nav side-menu">
-                    <li><a routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
+                    <li><a *appLayout="'sidebarScope.calendarPanel'" routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
                     </li>
-                    <li><a *appAppLayout="'sidebarScope.requestPanel'" routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i> Заявки Студентів  <span class="fa fa-chevron-right"></span></a>
+                    <li><a *appLayout="'sidebarScope.requestPanel'" routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i>Заявки студентів  <span class="fa fa-chevron-right"></span></a>
                     <!--<span class="badge bg-green" style="float:right;">1</span>-->
                     </li>
                   </ul>

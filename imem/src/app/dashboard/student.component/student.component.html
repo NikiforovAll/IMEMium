@@ -44,19 +44,19 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12">Телефон</label>
-							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-								<input type="text" id="phone" [(ngModel)]="modelUser.Phone" name="Phone" [readonly]="submitted" class="form-control has-feedback"
-								#phone="ngModel">
-								<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
-							</div>
-						</div>
-						<div class="form-group">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Пошта</label>
 							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
 								<input type="text" [(ngModel)]="modelUser.Email" name="Email" [readonly]="submitted" class="form-control has-feedback"
 								#email="ngModel">
 								<span class="fa fa-envelope form-control-feedback right" aria-hidden="true"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Телефон</label>
+							<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+								<input type="text" id="phone" [(ngModel)]="modelUser.Phone" name="Phone" [readonly]="submitted" class="form-control has-feedback"
+								#phone="ngModel">
+								<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 							</div>
 						</div>
 						<div class="form-group">

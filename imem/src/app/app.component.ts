@@ -7,9 +7,5 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class AppComponent {
   ngOnInit() {
-    // var gentelellaInit = require('../assets/gentelella.custom.js');
-    // gentelellaInit.init();
   }
-
-
 }

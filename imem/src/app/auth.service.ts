@@ -18,7 +18,7 @@ export interface IUser {
 }
 
 export interface PortalUser {
-    // id: number;
+    id: number;
     google_id: string;
     email: string;
     type: string;
@@ -51,13 +51,17 @@ export class AuthService {
         if (!this.currentUser) {
             return '';
         }
+        if(this.currentUser.type && this.currentUser.status == 'pending'){
+            return 'student_pending';
+        }
         return this.currentUser.type;
     }
 
     public getUserRoleLocal(locale: string): string {
         return {
             student: 'Студент',
-            admin: 'Адміністратор' 
+            admin: 'Адміністратор',
+            student_pending: 'Студент'
         }[this.getUserRole()];
     }
 
@@ -97,6 +101,7 @@ export class AuthService {
         this.loginNumber++;
         if (!environment.production && environment.authMock) {
             this.currentUser = {
+                id: -1,
                 google_id: '-1',
                 email: 'mock@email.com',
                 type: 'student',

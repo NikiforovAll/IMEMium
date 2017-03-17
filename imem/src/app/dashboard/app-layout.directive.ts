@@ -1,21 +1,30 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-
 import { AuthService } from '../auth.service';
 @Directive({
-  selector: '[appAppLayout]'
+  selector: '[appLayout]'
 })
 export class AppLayoutDirective {
 
   layoutConfig: any = {
     sidebarScope: {
-      requestPanel: ['admin']
+      requestPanel: ['admin'],
+      coursePanel: ['admin', 'student'],
+      studentPanel: ['admin', 'student'],
+      calendarPanel: ['admin', 'student'],
+      additionalMaterialsTitle: ['admin', 'student']
     },
     userDetailsScope: {
-        courseTab: ['student']
+        courseTab: ['student'],
+        editProfileButton: ['admin', 'student'],
+        pendingStatus: ['student_pending']
     },
     courseScope: {
       editButton: ['admin'],
       deleteButton: ['admin']
+    },
+    lectureScope: {
+      addFileButton: ['admin'],
+      editLectureButton: ['admin']
     }
   };
   constructor(
@@ -26,7 +35,7 @@ export class AppLayoutDirective {
     this.viewContainer.clear();
   }
 
-  @Input() set appAppLayout(route: string) {
+  @Input() set appLayout(route: string) {
     if(route == undefined){
       console.error('app-layout invalid input');
       return;
