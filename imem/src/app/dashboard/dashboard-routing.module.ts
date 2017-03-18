@@ -14,6 +14,8 @@ import { CourseComponent } from './course.component/course.component';
 import { LecturesComponent } from './lectures.component/lectures.component';
 import { LectureComponent } from './lecture.component/lecture.component';
 
+import { ExercisesComponent } from './exercises/exercises.component';
+
 
 
 import { DashboardComponent } from './dashboard.component';
@@ -66,6 +68,10 @@ const routes: Routes = [
             {
                 path: 'requests',
                 component: RequestComponent
+            },
+            {
+                path: 'exercises',
+                component: ExercisesComponent
             }
         ],
         canActivate: [AuthGuard],

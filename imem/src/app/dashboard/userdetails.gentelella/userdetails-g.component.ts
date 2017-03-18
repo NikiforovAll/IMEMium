@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, IUser } from '../../auth.service';
 import { PortalUser, SexType } from '../../Models/User';
-import { DateModel, DatePickerOptions } from 'ng2-datepicker';
+// import { DateModel, DatePickerOptions } from 'ng2-datepicker';
 @Component({
     moduleId: module.id,
     selector: 'userdetails',
@@ -13,8 +13,8 @@ export class UserDetailsComponent implements OnInit {
     modelUser: PortalUser;
     sexList: boolean[];
 
-    datepickerOption: DatePickerOptions;
-    datepickerModel: DateModel;
+    // datepickerOption: DatePickerOptions;
+    // datepickerModel: DateModel;
 
     courseListConfig = { columns: ['Name', 'Lecturer'] };
 
@@ -26,17 +26,16 @@ export class UserDetailsComponent implements OnInit {
         };
         this.submitted = true;
         this.sexList = [false, false];
-        // TBD: config does not work & readonly mode is not working
-        this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
+        // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
     }
 
     ngOnInit() { }
 
     onSubmit() {
         this.submitted = true;
-        this.modelUser.Birthday = new Date(Number.parseInt(this.datepickerModel.day),
-            Number.parseInt(this.datepickerModel.month) - 1,
-            Number.parseInt(this.datepickerModel.year));
+        // this.modelUser.Birthday = new Date(Number.parseInt(this.datepickerModel.day),
+        //     Number.parseInt(this.datepickerModel.month) - 1,
+        //     Number.parseInt(this.datepickerModel.year));
         console.log('form after submit: ', this.modelUser);
     }
 

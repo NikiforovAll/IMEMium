@@ -1,17 +1,23 @@
- <ng-table [config]="config"
-                    (tableChanged)="onChangeTable(config)"
-                    (cellClicked)="onCellClick($event)"
-                    [rows]="rows" [columns]="columns">
-</ng-table>
-<pagination *ngIf="config.paging"
-            class="pagination-sm"
-            [totalItems]="length"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
-            [boundaryLinks]="true"
-            [rotate]="false"
-            (pageChanged)="onChangeTable(config, $event)"
-            (numPages)="numPages = $event">
-</pagination>
-<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
-<div class="clearfix"></div>
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Пошук">
+</div>
+<p-dataTable 
+    [value]="data"
+    [paginator]="true"
+    [rows]="5"
+    [pageLinks]="3"
+    [globalFilter]="gb"
+    (onRowDblclick)="onRowClick($event)"
+    [rowsPerPageOptions]="[5,10,20]"
+    emptyMessage="І шо?">
+
+        <p-column *ngFor="let col of columns" 
+            [field]="col.name"
+            [header]="col.title"
+            [sortable]="col.sorting.sort"
+            filterMatchMode="contains"
+            [filterPlaceholder]="col.filtering.placeholder"
+            [filter]="col.filtering.filter"
+            ></p-column>
+</p-dataTable>

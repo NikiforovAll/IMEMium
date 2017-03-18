@@ -2,7 +2,7 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Course, CourseStatusList } from '../../Models/Course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
-import { DateModel, DatePickerOptions } from 'ng2-datepicker';
+// import { DateModel, DatePickerOptions } from 'ng2-datepicker';
 import { AuthService } from '../../auth.service'
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
@@ -21,10 +21,9 @@ export class CourseComponent implements OnInit {
     modelCourse: Course;
 
 
-    datepickerOption: DatePickerOptions;
-    // TBD: bind to model 
-    datepickerModelStartDate: DateModel;
-    datepickerModelEndDate: DateModel;
+    // datepickerOption: DatePickerOptions;
+    // datepickerModelStartDate: DateModel;
+    // datepickerModelEndDate: DateModel;
 
     selectedCourseStatus: any;
     _courseStatusList: any[];
@@ -40,7 +39,7 @@ export class CourseComponent implements OnInit {
         modal.overlay.defaultViewContainer = vcRef;
         this._courseStatusList = CourseStatusList;
         this.modelCourse = { id: -1, Name: 'Test Course' };
-        this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
+        // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
 
     }
 
