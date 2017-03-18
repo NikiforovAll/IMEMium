@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
         var gentelellaInit = require('../../assets/gentelella.custom.js');
         gentelellaInit.init();
         this._googleLoader.loadPicker();
+
     }
     ngAfterViewInit() {
     }

@@ -7,13 +7,19 @@ export class GentelellaService {
   /**
    * addCollapsablePanels
    */
+  public sideBarSetUp() {
+    if (!!(<any>window).sideBarPanelFix) {
+      (<any>window).sideBarPanelFix();
+    }
+  }
+  
   public addCollapsablePanels() {
-    if(!!(<any>window).collapsePanelFix){
+    if (!!(<any>window).collapsePanelFix) {
       (<any>window).collapsePanelFix();
     }
   }
   // https://github.com/shlomiassaf/angular2-modal/issues/258
-  public fixModalHeightAfterLongQuery(){
+  public fixModalHeightAfterLongQuery() {
     document.body.classList.remove('modal-open')
   }
 }

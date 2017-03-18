@@ -3,6 +3,11 @@
 .x_panel .ui-datatable th.ui-state-active{
   background: #324b63;
 }
+.x_panel .ui-paginator-page .ui-paginator-element .ui-state-default .ui-corner-all .ui-state-active{
+  background: #324b63;
+  color: #ffffff;
+  border-color: #324b63;
+}
 .collapsed{
   height: auto;
 }
