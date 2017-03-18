@@ -5,13 +5,14 @@ import { GentelellaService } from '../gentelella.service';
 // import { DateModel, DatePickerOptions } from 'ng2-datepicker';
 import { AuthService } from '../../auth.service'
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
-
+import { ConfirmationService } from 'primeng/primeng';
 
 @Component({
     moduleId: module.id,
     selector: 'course',
     templateUrl: 'course.component.html',
-    providers: [GentelellaService, Modal]
+    styleUrls: ['course.component.css'],
+    providers: [GentelellaService, ConfirmationService]
 })
 export class CourseComponent implements OnInit {
 
@@ -20,23 +21,16 @@ export class CourseComponent implements OnInit {
     submitted: boolean;
     modelCourse: Course;
 
-
-    // datepickerOption: DatePickerOptions;
-    // datepickerModelStartDate: DateModel;
-    // datepickerModelEndDate: DateModel;
-
     selectedCourseStatus: any;
     _courseStatusList: any[];
 
     constructor(
-            private route: ActivatedRoute,
-            private router: Router,
-            private _authService: AuthService,
-            private modal: Modal,
-            private vcRef: ViewContainerRef,
-            private gentelellaService: GentelellaService) {
+        private route: ActivatedRoute,
+        private router: Router,
+        private _authService: AuthService,
+        private confirmationService: ConfirmationService,
+        private gentelellaService: GentelellaService) {
         this.submitted = true;
-        modal.overlay.defaultViewContainer = vcRef;
         this._courseStatusList = CourseStatusList;
         this.modelCourse = { id: -1, Name: 'Test Course' };
         // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
@@ -66,33 +60,43 @@ export class CourseComponent implements OnInit {
         this.selectedCourseStatus = newObj;
     }
 
-    public openModalClose() {
-        let modal = this.modal.confirm()
-        .size('sm')
-        .isBlocking(true)
-        .showClose(true)
-        .keyboard(27)
-        .okBtn('Так')
-        .cancelBtn('Ні')
-        .headerClass('alert alert-warning')
-        .title('Видалення курсу')
-        .body(`
-            <div class="container body">
-                <div class="main_container">
-                    <!-- page content -->
-                        <div class="text-center text-center">                           
-                            <h2>Ви впевнені?</h2>
-                        </div>
-                    <!-- /page content -->
-                </div>
-            </div>`);
-        modal.open()
-        .then(dialog => dialog.result)
-        .then(result => {
-          this.navigateToParent();
-          this.gentelellaService.fixModalHeightAfterLongQuery();
-        })
-        .catch(result => {
+    public deleteCourseModal() {
+        this.confirmationService.confirm({
+            message: 'Ви впевнені?',
+            header: 'Видалення курсу',
+            icon: 'fa fa-trash',
+            accept: () => {
+                this.navigateToParent();
+            }
         });
     }
+    // public openModalClose() {
+    //     let modal = this.modal.confirm()
+    //     .size('sm')
+    //     .isBlocking(true)
+    //     .showClose(true)
+    //     .keyboard(27)
+    //     .okBtn('Так')
+    //     .cancelBtn('Ні')
+    //     .headerClass('alert alert-warning')
+    //     .title('Видалення курсу')
+    //     .body(`
+            // <div class="container body">
+            //     <div class="main_container">
+            //         <!-- page content -->
+            //             <div class="text-center text-center">                           
+            //                 <h2>Ви впевнені?</h2>
+            //             </div>
+            //         <!-- /page content -->
+            //     </div>
+            // </div>`);
+    //     modal.open()
+    //     .then(dialog => dialog.result)
+    //     .then(result => {
+    //       this.navigateToParent();
+    //       this.gentelellaService.fixModalHeightAfterLongQuery();
+    //     })
+    //     .catch(result => {
+    //     });
+    // }
 }

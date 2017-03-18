@@ -1,13 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
-
+/*primeng style set*/
+.x_panel .ui-widget-content{
+  color: #566372;
+}
+.x_panel .ui-column-title{
+  /*color: #566372;*/
+}
+.x_panel .ui-button{
+  border-color: #324b63;
+}
 .x_panel .ui-datatable th.ui-state-active{
   background: #324b63;
 }
-.x_panel .ui-paginator-page .ui-paginator-element .ui-state-default .ui-corner-all .ui-state-active{
+.x_panel .ui-paginator .ui-paginator-page.ui-state-active{
   background: #324b63;
   color: #ffffff;
   border-color: #324b63;
 }
+
+.deleteDialog .ui-dialog.ui-widget .ui-dialog-titlebar{
+    background: #ec971f!important;
+}
+.deleteDialog .ui-button-text-icon-left .ui-button-text{
+    background: #324b63;
+}
+.deleteDialog .ui-confirmdialog-message{
+  color: black;
+}
+.deleteDialog .ui-confirmdialog.ui-dialog .ui-dialog-content{
+  font-size: 1.25em;
+}
+.deleteDialog .ui-dialog.ui-widget .ui-dialog-titlebar .ui-dialog-title{
+    color: #ffffff;
+}
+/*primeng style set (END)*/
 .collapsed{
   height: auto;
 }

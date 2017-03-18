@@ -19,8 +19,8 @@ export class CommentSectionComponent implements OnInit {
   // 'insertFile' | 'file'
   editorConfig: Object = {
     height: 200,
-    toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '-',
-      'specialCharacters', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-', 
+    toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize',
+      'specialCharacters', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', 
       'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
     pluginsEnabled: ['fontFamily', 'lists', 'save', 'fontSize']
   };

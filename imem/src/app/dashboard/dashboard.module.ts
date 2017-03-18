@@ -35,7 +35,13 @@ import { CommentSectionComponent } from './comment-section/comment-section.compo
 import { AppLayoutDirective } from './app-layout.directive';
 import { ExercisesComponent } from './exercises/exercises.component';
 
-import { DataTableModule, SharedModule, PaginatorModule } from 'primeng/primeng';
+import {
+    DataTableModule,
+    SharedModule,
+    PaginatorModule,
+    ConfirmationService,
+    ConfirmDialogModule
+} from 'primeng/primeng';
 
 @NgModule({
     imports: [
@@ -46,6 +52,7 @@ import { DataTableModule, SharedModule, PaginatorModule } from 'primeng/primeng'
         DataTableModule,
         SharedModule,
         PaginatorModule,
+        ConfirmDialogModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot()
     ],

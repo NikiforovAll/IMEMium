@@ -19,8 +19,6 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { GoogleLoaderService } from './google-loader.service';
 import { CustomHttpService } from './custom-http.service'
-import { ModalModule } from 'angular2-modal';
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
     HttpModule,
     LoginModule,
     DashboardModule,
-    AppRoutingModule,
-    ModalModule.forRoot(),
-    BootstrapModalModule
+    AppRoutingModule
   ],
   providers: [
     AuthGuard,

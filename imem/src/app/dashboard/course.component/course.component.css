@@ -1,0 +1,12 @@
+.x_panel .ui-dialog.ui-widget .ui-dialog-titlebar{
+  background: #324b63;
+}
+.x_panel .ui-button-text-icon-left .ui-button-text{
+  background: #324b63;
+}
+.x_panel .ui-confirmdialog-message{
+  color: black;
+}
+.x_panel .ui-confirmdialog.ui-dialog .ui-dialog-content{
+  font-size: 1.25em;
+}
