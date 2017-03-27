@@ -2,9 +2,8 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Course, CourseStatusList } from '../../Models/Course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
-// import { DateModel, DatePickerOptions } from 'ng2-datepicker';
+import { localeConfig } from '../../calendar-app-config.service';
 import { AuthService } from '../../auth.service'
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { ConfirmationService } from 'primeng/primeng';
 
 @Component({
@@ -20,6 +19,7 @@ export class CourseComponent implements OnInit {
     private sub: any;
     submitted: boolean;
     modelCourse: Course;
+    locale: any;
 
     selectedCourseStatus: any;
     _courseStatusList: any[];
@@ -31,6 +31,7 @@ export class CourseComponent implements OnInit {
         private confirmationService: ConfirmationService,
         private gentelellaService: GentelellaService) {
         this.submitted = true;
+        this.locale = localeConfig;
         this._courseStatusList = CourseStatusList;
         this.modelCourse = { id: -1, Name: 'Test Course' };
         // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
@@ -81,15 +82,15 @@ export class CourseComponent implements OnInit {
     //     .headerClass('alert alert-warning')
     //     .title('Видалення курсу')
     //     .body(`
-            // <div class="container body">
-            //     <div class="main_container">
-            //         <!-- page content -->
-            //             <div class="text-center text-center">                           
-            //                 <h2>Ви впевнені?</h2>
-            //             </div>
-            //         <!-- /page content -->
-            //     </div>
-            // </div>`);
+    // <div class="container body">
+    //     <div class="main_container">
+    //         <!-- page content -->
+    //             <div class="text-center text-center">                           
+    //                 <h2>Ви впевнені?</h2>
+    //             </div>
+    //         <!-- /page content -->
+    //     </div>
+    // </div>`);
     //     modal.open()
     //     .then(dialog => dialog.result)
     //     .then(result => {

@@ -102,6 +102,11 @@
                             <div class="form-group">
                               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">День Народження</label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
+                              <p-calendar [(ngModel)]="modelUser.Birthday"
+                                  [showIcon]="true"
+                                  [disabled]="submitted"
+                                  [locale]="locale"
+                                  name="Birthday"></p-calendar>
                                 <!--<input type="text" id="birthday" [(ngModel)]="modelUser.Birthday" name="Birthday" [readonly]="submitted" class="form-control col-md-7 col-xs-12"
                                       >-->
                                 <!--<ng2-datepicker [options]="datepickerOption" [(ngModel)]="datepickerModel" name="Birthday" required></ng2-datepicker>-->

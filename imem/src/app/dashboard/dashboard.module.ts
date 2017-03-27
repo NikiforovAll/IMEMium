@@ -35,12 +35,14 @@ import { CommentSectionComponent } from './comment-section/comment-section.compo
 import { AppLayoutDirective } from './app-layout.directive';
 import { ExercisesComponent } from './exercises/exercises.component';
 
+import { CalendarAppConfigService } from '../calendar-app-config.service'
 import {
     DataTableModule,
     SharedModule,
     PaginatorModule,
     ConfirmationService,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    CalendarModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -53,6 +55,7 @@ import {
         SharedModule,
         PaginatorModule,
         ConfirmDialogModule,
+        CalendarModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot()
     ],
@@ -78,7 +81,7 @@ import {
         ExercisesComponent
     ],
     providers: [
-        // FullCalendarService
+        CalendarAppConfigService,
         { provide: RequestOptions, useClass: CustomRequestOptionsService }
     ]
 })
