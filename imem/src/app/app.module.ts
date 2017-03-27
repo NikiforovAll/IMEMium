@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   LocationStrategy,
   HashLocationStrategy
@@ -31,6 +32,7 @@ import { CustomHttpService } from './custom-http.service'
     HttpModule,
     LoginModule,
     DashboardModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   providers: [

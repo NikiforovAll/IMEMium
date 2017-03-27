@@ -10,30 +10,7 @@ import { LoginConfigService, delay } from './login-config.service';
 @Component({
     moduleId: module.id,
     selector: 'password-loss',
-    templateUrl: 'password-loss.component.html',
-    animations: [
-        trigger('routeAnimation', [
-            // state('*',
-            //     style({
-            //         opacity: 1,
-            //         transform: 'translateX(0)'
-            //     })
-            // ),
-            transition('void => *', [
-                style({
-                    opacity: 0,
-                    transform: 'translateX(-100%)'
-                }),
-                animate(delay + 'ease-in')
-            ]),
-            transition('* => void', [
-                animate(delay + 'ease-out', style({
-                    opacity: 0,
-                    transform: 'translateX(100%)'
-                }))
-            ])
-        ])
-    ]
+    templateUrl: 'password-loss.component.html'
 })
 export class PasswordLossComponent implements OnInit {
     @HostBinding('@routeAnimation') get routeAnimation() {
