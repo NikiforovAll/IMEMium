@@ -6,6 +6,9 @@
 .x_panel .ui-column-title{
   /*color: #566372;*/
 }
+.x_panel .ui-growl-item-container.ui-state-highlight.ui-growl-message-info{
+  background:#2A3F54;
+}
 .request-content{
   color: #566372;
 }

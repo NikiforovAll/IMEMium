@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Message} from 'primeng/primeng';
 @Component({
     moduleId: module.id,
     selector: 'request-panel',
@@ -9,7 +9,7 @@ export class RequestComponent implements OnInit {
         
     private portalData: Array<any>;
     private courseRequestData: Array<any>;
-
+    msgs: Message[] = [];
     constructor() {
         this.portalData = [
             { Name: "Alexey Nikiforov", StudentId: '1', Status: 0, CourseName: "Course1", Date: new Date() },
@@ -30,9 +30,11 @@ export class RequestComponent implements OnInit {
     //TBD: change to string literal (impact filtering)
     acceptItem(data: any): void {
         data.Status = 1;
+        this.msgs.push({severity:'info', summary:'Обробка заявки', detail:'Заявка прийнята'});
     }
     declineItem(data: any): void {
         data.Status = 2;
+        this.msgs.push({severity:'info', summary:'Обробка заявки', detail:'Зайвка відхилена'});
     }
 
     ngOnInit() { }

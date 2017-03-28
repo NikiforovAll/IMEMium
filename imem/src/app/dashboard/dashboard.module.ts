@@ -42,7 +42,8 @@ import {
     PaginatorModule,
     ConfirmationService,
     ConfirmDialogModule,
-    CalendarModule
+    CalendarModule, 
+    GrowlModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -56,6 +57,7 @@ import {
         PaginatorModule,
         ConfirmDialogModule,
         CalendarModule,
+        GrowlModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot()
     ],
