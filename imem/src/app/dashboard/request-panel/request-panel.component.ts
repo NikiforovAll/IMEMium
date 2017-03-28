@@ -6,27 +6,35 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'request-panel.component.html'
 })
 export class RequestComponent implements OnInit {
-    constructor() { }
+        
+    private portalData: Array<any>;
+    private courseRequestData: Array<any>;
 
-    studentRequests:any[] = [
-    {Name: "Alexey Nikiforov", Status: 0,  CourseName: "Course1"},
-    {Name: "Egor Dobrovolskij",  Status: 0, CourseName: "Course1"},
-    {Name: "Stas Bondarenko", Status: 1,  CourseName: "Course2"},
-    {Name: "Yakov Yusipenko", Status: 1,  CourseName: "Course3"},
-    {Name: "Mike Evgeniyev", Status: 2,  CourseName: "Course4"}
-    ]
+    constructor() {
+        this.portalData = [
+            { Name: "Alexey Nikiforov", StudentId: '1', Status: 0, CourseName: "Course1", Date: new Date() },
+            { Name: "Egor Dobrovolskij", StudentId: '1', Status: 0, CourseName: "Course1", Date: new Date()},
+            { Name: "Stas Bondarenko", StudentId: '1', Status: 1, CourseName: "Course2", Date: new Date()},
+            { Name: "Yakov Yusipenko", StudentId: '1', Status: 1, CourseName: "Course3", Date: new Date() },
+            { Name: "Mike Evgeniyev", StudentId: '1', Status: 2, CourseName: "Course4", Date: new Date() }
+        ]
+        this.courseRequestData = [
+            { Name: "Alexey Nikiforov", StudentId: '1', Status: 0, CourseName: "Course1", Date: new Date() },
+            { Name: "Egor Dobrovolskij", StudentId: '1', Status: 0, CourseName: "Course1", Date: new Date()},
+            { Name: "Stas Bondarenko", StudentId: '1', Status: 1, CourseName: "Course2", Date: new Date()},
+            { Name: "Yakov Yusipenko", StudentId: '1', Status: 1, CourseName: "Course3", Date: new Date() },
+            { Name: "Mike Evgeniyev", StudentId: '1', Status: 2, CourseName: "Course4", Date: new Date() }
+        ];
+    }
 
-    acceptItem(index:any):void{
-        this.studentRequests[index].Status = 1;
+    //TBD: change to string literal (impact filtering)
+    acceptItem(data: any): void {
+        data.Status = 1;
     }
-    declineItem(index:any):void{
-        this.studentRequests[index].Status = 2;
-    }
-    removeItem(index:any):void{
-        if (index > -1) {
-            this.studentRequests.splice(index, 1);
-        }
+    declineItem(data: any): void {
+        data.Status = 2;
     }
 
     ngOnInit() { }
+
 }

@@ -8,9 +8,9 @@
     [rows]="5"
     [pageLinks]="3"
     [globalFilter]="gb"
-    (onRowDblclick)="onRowClick($event)"
+    (onRowClick)="onRowClick($event)"
     [rowsPerPageOptions]="[5,10,20]"
-    emptyMessage="І шо?">
+    emptyMessage="Немає результатів">
 
         <p-column *ngFor="let col of columns" 
             [field]="col.name"

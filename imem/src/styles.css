@@ -6,6 +6,10 @@
 .x_panel .ui-column-title{
   /*color: #566372;*/
 }
+.request-content{
+  color: #566372;
+}
+
 .x_panel .ui-button{
   border-color: #324b63;
 }
