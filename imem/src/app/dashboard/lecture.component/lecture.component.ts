@@ -2,25 +2,23 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
 import { GoogleLoaderService } from '../../google-loader.service';
+import { editorConfig } from '../../editor-config.service';
+
 @Component({
     moduleId: module.id,
     selector: 'lecture',
     templateUrl: 'lecture.component.html',
+    styleUrls: ['lecture.component.css'],
     providers: [GentelellaService]
 })
 export class LectureComponent implements OnInit {
     id: string;
     lastCommentToggle: boolean = false;
+    modelLecture:any;
     fileList: any[];
     private sub: any;
 
-    editorConfig: Object = {
-        height: 200,
-        toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', '-',
-            'specialCharacters', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', 'insertHR', '-',
-            'insertFile', 'undo', 'redo', 'clearFormatting', 'selectAll', 'html'],
-        pluginsEnabled: ['fontFamily', 'file', 'lists', 'save', 'fontSize']
-    };
+    editorConfig = editorConfig;
     editorContent: Object;
     submitted: boolean;
 
@@ -35,6 +33,7 @@ export class LectureComponent implements OnInit {
         this.submitted = true;
         _googleLoader.pickerCallback = this.pickerCallBack;
         _googleLoader.setContex(this);
+        this.modelLecture = {};
         this.fileList = [];
 
     }

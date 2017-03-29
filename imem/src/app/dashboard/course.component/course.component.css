@@ -10,3 +10,7 @@
 .x_panel .ui-confirmdialog.ui-dialog .ui-dialog-content{
   font-size: 1.25em;
 }
+
+.editor-panel{
+  height: 200px;
+}

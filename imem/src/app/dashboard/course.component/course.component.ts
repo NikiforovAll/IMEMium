@@ -5,6 +5,7 @@ import { GentelellaService } from '../gentelella.service';
 import { localeConfig } from '../../calendar-app-config.service';
 import { AuthService } from '../../auth.service'
 import { ConfirmationService } from 'primeng/primeng';
+import { editorConfig } from '../../editor-config.service';
 
 @Component({
     moduleId: module.id,
@@ -23,6 +24,7 @@ export class CourseComponent implements OnInit {
 
     selectedCourseStatus: any;
     _courseStatusList: any[];
+    editorConfig = editorConfig;
 
     constructor(
         private route: ActivatedRoute,
@@ -34,8 +36,6 @@ export class CourseComponent implements OnInit {
         this.locale = localeConfig;
         this._courseStatusList = CourseStatusList;
         this.modelCourse = { id: -1, Name: 'Test Course' };
-        // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
-
     }
 
     onSubmit() {

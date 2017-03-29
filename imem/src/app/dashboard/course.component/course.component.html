@@ -32,12 +32,12 @@
                     </div>
                     <div class="form-group">
                         <label>Опис</label>
-                        <textarea style="height:200px;"
-                            class="resizable_textarea form-control"
-                            [readonly]="submitted"
-                            name="Description"
-                            [(ngModel)]="modelCourse.Description"
-                            placeholder="Введіть опис тут"></textarea>
+                        <div *ngIf="!submitted" [froalaEditor]="editorConfig" [(froalaModel)]="modelCourse.Description"></div>
+                        <div *ngIf="submitted"
+                             class="form-control scrollable"
+                             [ngClass]="{'editor-panel': submitted && !!modelCourse.Description}">
+                            <div *ngIf="!!modelCourse.Description" [froalaView]="modelCourse.Description"></div>
+                        </div>
                     </div>
                     <div class="form-group" style="margin-top: 20px;">
                         <label class="control-label col-md-2 col-sm-3 col-xs-12" for="first-name">Початок</label>

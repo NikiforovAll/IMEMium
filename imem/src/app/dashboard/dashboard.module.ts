@@ -43,6 +43,7 @@ import {
     ConfirmationService,
     ConfirmDialogModule,
     CalendarModule, 
+    FieldsetModule,
     GrowlModule
 } from 'primeng/primeng';
 
@@ -58,6 +59,7 @@ import {
         ConfirmDialogModule,
         CalendarModule,
         GrowlModule,
+        FieldsetModule,
         FroalaEditorModule.forRoot(),
         FroalaViewModule.forRoot()
     ],
