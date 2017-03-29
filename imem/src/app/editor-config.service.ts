@@ -7,6 +7,7 @@ export class EditorConfigService {
 
 }
 export const editorConfig = {
+    language: 'ru',
     height: 200,
     placeholderText: '',
     toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize',

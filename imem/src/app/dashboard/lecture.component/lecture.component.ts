@@ -13,7 +13,7 @@ import { editorConfig } from '../../editor-config.service';
 })
 export class LectureComponent implements OnInit {
     id: string;
-    lastCommentToggle: boolean = false;
+    isShowCommentSection: boolean = false;
     modelLecture:any;
     fileList: any[];
     private sub: any;

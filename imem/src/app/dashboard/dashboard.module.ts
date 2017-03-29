@@ -46,6 +46,7 @@ import {
     FieldsetModule,
     GrowlModule
 } from 'primeng/primeng';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
     imports: [
@@ -82,7 +83,8 @@ import {
         LecturesTableComponent,
         CommentSectionComponent,
         AppLayoutDirective,
-        ExercisesComponent
+        ExercisesComponent,
+        CommentComponent
     ],
     providers: [
         CalendarAppConfigService,

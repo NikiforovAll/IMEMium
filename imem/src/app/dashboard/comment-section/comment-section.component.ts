@@ -6,6 +6,7 @@ export interface Comment {
   DateLabel: string;
   PictureUrl: string;
   EditorContent: Object;
+  IsRoot?: boolean;
 }
 
 @Component({
@@ -15,7 +16,7 @@ export interface Comment {
 })
 export class CommentSectionComponent implements OnInit {
 
-  lastCommentToggle: boolean = false;
+  isShowCommentSection: boolean = false;
   private sub: any;
   // 'insertFile' | 'file'
   editorConfig = editorConfig;
@@ -43,14 +44,14 @@ export class CommentSectionComponent implements OnInit {
         });
     }
     this.editorContent = '';
-    this.lastCommentToggle = !this.lastCommentToggle;
+    this.isShowCommentSection = !this.isShowCommentSection;
   }
   public toggleCommentSection() {
-    if (!this.lastCommentToggle) {
+    if (!this.isShowCommentSection) {
       // document.getElementById('commentBtn').scrollIntoView()
       // document.getElementById('comment-section').focus()
     }
-    this.lastCommentToggle = !this.lastCommentToggle;
+    this.isShowCommentSection = !this.isShowCommentSection;
   }
 
 }
