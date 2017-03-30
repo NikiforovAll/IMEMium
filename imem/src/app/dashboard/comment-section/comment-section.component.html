@@ -1,9 +1,9 @@
-<template ngFor let-item [ngForOf]="commentList">
-  <comment-block [modelComment]="item"></comment-block>
-</template>
+<ng-template ngFor let-item [ngForOf]="commentList">
+  <comment-block [isAllowedToReply]="isRootSection" [modelComment]="item"></comment-block>
+</ng-template>
 <div class="col-center" [hidden]="!isShowCommentSection">
-  <div [froalaEditor]="editorConfig" [(froalaModel)]="editorContent"></div>
-  <div class="form-group" id="commentBtn" align="center" [hidden]="!isShowCommentSection" style="margin-top: 20px;">
+  <div [froalaEditor]="editorConfig" [(froalaModel)]="editorContent" id="editor"></div>
+  <div class="form-group"  id="commentBtn" align="center" #mainButton [hidden]="!isShowCommentSection" style="margin-top: 20px;" tabindex="0">
     <a class="btn btn-success" (click)="addComment()"><i class="fa fa-edit m-right-xs"></i>Підтвердити</a>
   </div>
 </div>

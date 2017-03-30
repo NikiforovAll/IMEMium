@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewChecked,
+  ElementRef,
+  Input,
+  ChangeDetectorRef
+} from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { editorConfig } from '../../editor-config.service';
 export interface Comment {
@@ -14,23 +22,39 @@ export interface Comment {
   templateUrl: './comment-section.component.html',
   styleUrls: ['./comment-section.component.css']
 })
-export class CommentSectionComponent implements OnInit {
+export class CommentSectionComponent implements OnInit, AfterViewChecked {
+
 
   isShowCommentSection: boolean = false;
-  private sub: any;
+  private isNeedToScroll = false;
   // 'insertFile' | 'file'
   editorConfig = editorConfig;
-
   editorContent: Object;
   commentList: Comment[];
+  @Input()
+  isRootSection = true;
 
+  @ViewChild('mainButton') private mainButton: ElementRef;
+  @ViewChild('editor') private editor: ElementRef;
   constructor(
-    private _authService: AuthService
+    private _authService: AuthService,
+    private changeDetector: ChangeDetectorRef
   ) {
     this.commentList = [];
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.isNeedToScroll) {
+      let currElement = this.mainButton.nativeElement;
+      const elementRect = currElement.getBoundingClientRect();
+      const absoluteElementTop = elementRect.top + window.pageYOffset;
+      const middle = absoluteElementTop - (window.innerHeight / 2);
+      window.scrollTo(0, middle);
+      this.isNeedToScroll = false;
+    }
   }
 
   public addComment() {
@@ -45,13 +69,14 @@ export class CommentSectionComponent implements OnInit {
     }
     this.editorContent = '';
     this.isShowCommentSection = !this.isShowCommentSection;
+    this.changeDetector.detectChanges();
   }
   public toggleCommentSection() {
-    if (!this.isShowCommentSection) {
-      // document.getElementById('commentBtn').scrollIntoView()
-      // document.getElementById('comment-section').focus()
-    }
     this.isShowCommentSection = !this.isShowCommentSection;
+    if (this.isShowCommentSection) {
+      this.isNeedToScroll = true;
+    }
+
   }
 
 }

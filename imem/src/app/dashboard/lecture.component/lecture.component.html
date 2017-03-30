@@ -113,6 +113,7 @@
                 <hr />
                 <div class="form-group" align="center" *appLayout="'lectureScope.addFileButton'">
                     <div class="btn btn-primary submit"
+                    tabindex="0"
                     *ngIf="!commentSection.isShowCommentSection"
                      (click)="commentSection.toggleCommentSection()"
                      align="right"><i class="fa fa-plus m-right-xs"></i> Додати коментар</div>
