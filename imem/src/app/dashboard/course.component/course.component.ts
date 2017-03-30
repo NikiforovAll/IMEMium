@@ -6,6 +6,7 @@ import { localeConfig } from '../../calendar-app-config.service';
 import { AuthService } from '../../auth.service'
 import { ConfirmationService } from 'primeng/primeng';
 import { editorConfig } from '../../editor-config.service';
+import { Message } from 'primeng/primeng';
 
 @Component({
     moduleId: module.id,
@@ -16,6 +17,11 @@ import { editorConfig } from '../../editor-config.service';
 })
 export class CourseComponent implements OnInit {
 
+    private msgSubscribtionMap = {
+        "pending": "Обробляється...",
+        "free": "Подати заявку на курс",
+        "accepted": ""
+    };
     id: string;
     private sub: any;
     submitted: boolean;
@@ -25,6 +31,11 @@ export class CourseComponent implements OnInit {
     selectedCourseStatus: any;
     _courseStatusList: any[];
     editorConfig = editorConfig;
+    msgs: Message[] = [];
+
+    // TBD: change name
+    courseStatusForUser = false;
+    courseMessageForCurrentuser = this.msgSubscribtionMap["free"];
 
     constructor(
         private route: ActivatedRoute,
@@ -71,33 +82,21 @@ export class CourseComponent implements OnInit {
             }
         });
     }
-    // public openModalClose() {
-    //     let modal = this.modal.confirm()
-    //     .size('sm')
-    //     .isBlocking(true)
-    //     .showClose(true)
-    //     .keyboard(27)
-    //     .okBtn('Так')
-    //     .cancelBtn('Ні')
-    //     .headerClass('alert alert-warning')
-    //     .title('Видалення курсу')
-    //     .body(`
-    // <div class="container body">
-    //     <div class="main_container">
-    //         <!-- page content -->
-    //             <div class="text-center text-center">                           
-    //                 <h2>Ви впевнені?</h2>
-    //             </div>
-    //         <!-- /page content -->
-    //     </div>
-    // </div>`);
-    //     modal.open()
-    //     .then(dialog => dialog.result)
-    //     .then(result => {
-    //       this.navigateToParent();
-    //       this.gentelellaService.fixModalHeightAfterLongQuery();
-    //     })
-    //     .catch(result => {
-    //     });
-    // }
+    public requestForCourseModal() {
+        if (!this.courseStatusForUser) {
+            this.confirmationService.confirm({
+                message: 'Ви впевнені?',
+                header: 'Заявка на курс',
+                icon: 'fa fa-info',
+                accept: () => {
+                    this.requestForCourse();
+                }
+            });
+        }
+    }
+    public requestForCourse() {
+        this.msgs.push({ severity: 'info', summary: 'Заявка', detail: `Заявку було подано` });
+        this.courseStatusForUser = true;
+        this.courseMessageForCurrentuser = this.msgSubscribtionMap["pending"];
+    }
 }

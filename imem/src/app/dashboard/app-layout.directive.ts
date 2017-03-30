@@ -20,11 +20,13 @@ export class AppLayoutDirective {
     },
     courseScope: {
       editButton: ['admin'],
-      deleteButton: ['admin']
+      deleteButton: ['admin'],
+      subscribeButton: ['student']
     },
     lectureScope: {
       addFileButton: ['admin'],
-      editLectureButton: ['admin']
+      editLectureButton: ['admin'],
+      addCommentButton: ['admin', 'student']
     }
   };
   constructor(
