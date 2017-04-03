@@ -11,7 +11,7 @@ export class TopnavComponent implements OnInit {
     constructor(
         public _authService: AuthService,
         private router: Router) {
-         }
+    }
     logout() {
         this._authService.logout();
     }

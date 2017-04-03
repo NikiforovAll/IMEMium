@@ -1,53 +1,53 @@
-        <div class="col-md-3 left_col menu_fixed">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a routerLink='/dashboard' class="site_title"><i class="fa fa-sitemap" ></i> <span>Портал ІМЕМ</span></a>
-            </div>
+<div class="col-md-3 left_col menu_fixed">
+  <div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+      <a routerLink='/dashboard' class="site_title"><i class="fa fa-sitemap" ></i> <span>Портал ІМЕМ</span></a>
+    </div>
 
-            <div class="clearfix"></div>
-            <br />
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
-              <div class="menu_section">
-                <ul class="nav side-menu">
-                  <li><a routerLink="/dashboard"><i class="fa fa-home"></i> Головна <span class="fa fa-chevron-right"></span></a>
-                  </li>
-                  <li><a *appLayout="'sidebarScope.coursePanel'" routerLink="/dashboard/courses"><i class="fa fa-book"></i> Навчальні курси <span class="fa fa-chevron-right"></span></a>
-                  </li>
-                  <li><a *appLayout="'sidebarScope.studentPanel'" routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Студенти <span class="fa fa-chevron-right"></span></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="admin main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                  <h3 *appLayout="'sidebarScope.calendarPanel'">Додаткові Матеріали</h3>
-                  <ul class="nav side-menu">
-                    <li><a *appLayout="'sidebarScope.calendarPanel'" routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
-                    </li>
-                    <li><a *appLayout="'sidebarScope.requestPanel'" routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i>Заявки студентів  <span class="fa fa-chevron-right"></span></a>
-                    <!--<span class="badge bg-green" style="float:right;">1</span>-->
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" >
-                <span class="glyphicon" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" routerLink="/dashboard">
-                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a (click)="logout()" data-placement="top" title="Logout">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
+    <div class="clearfix"></div>
+    <br />
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu ">
+      <div class="menu_section">
+        <ul class="nav side-menu">
+          <li><a routerLink="/dashboard"><i class="fa fa-home"></i> Головна <span class="fa fa-chevron-right"></span></a>
+          </li>
+          <li><a *appLayout="'sidebarScope.coursePanel'" routerLink="/dashboard/courses"><i class="fa fa-book"></i> Навчальні курси <span class="fa fa-chevron-right"></span></a>
+          </li>
+          <li><a *appLayout="'sidebarScope.studentPanel'" routerLink="/dashboard/students"><i class="fa  fa-graduation-cap"></i> Студенти <span class="fa fa-chevron-right"></span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="admin main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+          <h3 *appLayout="'sidebarScope.calendarPanel'">Додаткові Матеріали</h3>
+          <ul class="nav side-menu">
+            <li><a *appLayout="'sidebarScope.calendarPanel'" routerLink="/dashboard/calendar"><i class="fa fa-calendar"></i>Календар<span class="fa fa-chevron-right"></span></a>
+            </li>
+            <li><a *appLayout="'sidebarScope.requestPanel'" routerLink="/dashboard/requests"><i class="fa fa-bell-o"></i>Заявки студентів  <span class="fa fa-chevron-right"></span></a>
+              <!--<span class="badge bg-green" style="float:right;">1</span>-->
+            </li>
+          </ul>
         </div>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top">
+        <span class="glyphicon" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" routerLink="/dashboard">
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <a (click)="logout()" data-placement="top" title="Logout">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      </a>
+    </div>
+    <!-- /menu footer buttons -->
+  </div>
+</div>

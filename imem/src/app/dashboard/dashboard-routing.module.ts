@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../auth-guard.service'
 
 import { TopnavComponent } from './topnav.gentelella/topnav-g.component';
 import { SidebarComponent } from './sidebar.gentelella/sidebar-g.component'
@@ -7,22 +8,16 @@ import { FooterComponent } from './footer.gentelella/footer-g.component';
 import { UserDetailsComponent } from './userdetails.gentelella/userdetails-g.component';
 import { StudentsComponent } from './students.component/students.component';
 import { StudentComponent } from './student.component/student.component';
-
 import { CoursesComponent } from './courses.component/courses.component';
 import { CourseComponent } from './course.component/course.component';
-
 import { LecturesComponent } from './lectures.component/lectures.component';
 import { LectureComponent } from './lecture.component/lecture.component';
-
 import { ExercisesComponent } from './exercises/exercises.component';
-
-
-
 import { DashboardComponent } from './dashboard.component';
 import { CalendarComponent } from './calendar.gentelella/calendar.component';
 import { RequestComponent } from './request-panel/request-panel.component';
 
-import { AuthGuard } from '../auth-guard.service'
+import { ExerciseComponent } from "app/dashboard/exercise/exercise.component";
 const routes: Routes = [
     // {
     //     path: '',
@@ -72,7 +67,11 @@ const routes: Routes = [
             {
                 path: 'exercises',
                 component: ExercisesComponent
-            }
+            },
+            {
+                path: 'exercises/:id',
+                component: ExerciseComponent
+            },
         ],
         canActivate: [AuthGuard],
         canActivateChild: [AuthGuard]

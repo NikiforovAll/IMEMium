@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
 import { GoogleLoaderService } from '../../google-loader.service';
 import { editorConfig } from '../../editor-config.service';
-
+import { Location } from '@angular/common';
 @Component({
     moduleId: module.id,
     selector: 'lecture',
@@ -26,6 +26,7 @@ export class LectureComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
+        private _location: Location,
         private _googleLoader: GoogleLoaderService,
         private gentelellaService: GentelellaService,
         private ref: ChangeDetectorRef
@@ -74,7 +75,6 @@ export class LectureComponent implements OnInit {
         this._googleLoader.createPicker();
     }
     navigateToParent(): void {
-        // TBD: change to actual course id
-        this.router.navigate(['/dashboard/courses', 1]);
+        this._location.back();
     }
 }

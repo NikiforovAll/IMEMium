@@ -14,9 +14,9 @@ export class AppLayoutDirective {
       additionalMaterialsTitle: ['admin', 'student']
     },
     userDetailsScope: {
-        courseTab: ['student'],
-        editProfileButton: ['admin', 'student'],
-        pendingStatus: ['student_pending']
+      courseTab: ['student'],
+      editProfileButton: ['admin', 'student'],
+      pendingStatus: ['student_pending']
     },
     courseScope: {
       editButton: ['admin'],
@@ -27,6 +27,10 @@ export class AppLayoutDirective {
       addFileButton: ['admin'],
       editLectureButton: ['admin'],
       addCommentButton: ['admin', 'student']
+    },
+    exerciseScope: {
+      answerTab: ['student'],
+      globalAnswersTab: ['admin']
     }
   };
   constructor(
@@ -38,7 +42,7 @@ export class AppLayoutDirective {
   }
 
   @Input() set appLayout(route: string) {
-    if(route == undefined){
+    if (route == undefined) {
       console.error('app-layout invalid input');
       return;
     }

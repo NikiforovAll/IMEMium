@@ -44,9 +44,11 @@ import {
     ConfirmDialogModule,
     CalendarModule, 
     FieldsetModule,
-    GrowlModule
+    GrowlModule,
 } from 'primeng/primeng';
 import { CommentComponent } from './comment/comment.component';
+import { ExercisesTableComponent } from './exercises-table/exercises-table.component';
+import { ExerciseComponent } from './exercise/exercise.component';
 
 @NgModule({
     imports: [
@@ -84,7 +86,9 @@ import { CommentComponent } from './comment/comment.component';
         CommentSectionComponent,
         AppLayoutDirective,
         ExercisesComponent,
-        CommentComponent
+        CommentComponent,
+        ExercisesTableComponent,
+        ExerciseComponent
     ],
     providers: [
         CalendarAppConfigService,

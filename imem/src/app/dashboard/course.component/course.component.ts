@@ -7,6 +7,7 @@ import { AuthService } from '../../auth.service'
 import { ConfirmationService } from 'primeng/primeng';
 import { editorConfig } from '../../editor-config.service';
 import { Message } from 'primeng/primeng';
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -41,6 +42,7 @@ export class CourseComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private _authService: AuthService,
+        private _location: Location,
         private confirmationService: ConfirmationService,
         private gentelellaService: GentelellaService) {
         this.submitted = true;
@@ -64,7 +66,7 @@ export class CourseComponent implements OnInit {
     }
 
     private navigateToParent(): void {
-        this.router.navigate(['/dashboard/courses']);
+        this._location.back();
     }
     private onChangeObj(newObj) {
         console.log(newObj);

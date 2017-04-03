@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../../Models/Student';
 import { AuthService, IUser } from '../../auth.service';
 import { PortalUser, SexType } from '../../Models/User';
-// import { DateModel, DatePickerOptions } from 'ng2-datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GentelellaService } from '../gentelella.service';
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -38,6 +38,7 @@ export class StudentComponent implements OnInit {
     courseListConfig = { columns: ['Name', 'Lecturer'] };
     constructor(
             private route: ActivatedRoute,
+            private _location: Location,
             private gentelellaService: GentelellaService,
             private router: Router) {
         // this.datepickerOption = { locale: 'ru', firstWeekdaySunday: false, style: 'bold' };
@@ -71,7 +72,7 @@ export class StudentComponent implements OnInit {
         this.modelUser.Sex = SexType[SexType[1 - index]];
     }
     private navigateToParent(): void {
-        this.router.navigate(['/dashboard/students']);
+        this._location.back();
     }
   
 }
